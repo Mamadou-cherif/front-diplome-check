@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
+import { LoginRequest } from './login-request.model';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { FormsModule } from '@angular/forms';
@@ -20,15 +21,16 @@ export class LoginComponent {
   loading = false;
   error: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
     this.loading = true;
     this.error = null;
-    this.http.post<any>(`${environment.apiUrl}/auth/login`, {
+    const data: LoginRequest = {
       email: this.email,
       password: this.password
-    }).subscribe({
+    };
+    this.authService.login(data).subscribe({
       next: (res) => {
         if (res.token) {
           localStorage.setItem('token', res.token);

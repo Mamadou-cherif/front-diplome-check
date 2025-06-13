@@ -12,6 +12,7 @@ import { ProjectComponent } from './Pages/Dashboard/project/project.component';
 import { KanbanComponent } from './Pages/Apps/kanban/kanban.component';
 import { EcommerceComponent } from './Pages/Dashboard/ecommerce/ecommerce.component';
 import { LoginComponent } from './features/auth/login/login.component';
+import { SignupComponent } from './features/auth/signup/signup.component';
 
 export const routes: Routes = [
 
@@ -39,6 +40,7 @@ export const routes: Routes = [
   { path: 'error-500', component: Error500Component },
   { path: 'error-503', component: Error503Component },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
 
 
