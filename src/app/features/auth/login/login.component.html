@@ -41,19 +41,26 @@
                 <div class="px-5 capitalize text-muted whitespace-nowrap dark:text-darkmuted">Ou avec un Email</div>
                 <div class="w-full h-[2px] bg-black/10 dark:bg-darkborder"></div>
             </div>
-            <form class="space-y-4">
+            <form class="space-y-4" (ngSubmit)="login()" autocomplete="on">
                 <div>
-                    <input type="text" value="" placeholder="Email professionnel ou académique" class="form-input" required>
+                    <input type="text" [(ngModel)]="email" name="email" placeholder="Email professionnel ou académique" class="form-input" required [disabled]="loading">
                 </div>
                 <div>
-                    <input type="password" value="" placeholder="Mot de passe" class="form-input" required>
+                    <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe" class="form-input" required [disabled]="loading">
                 </div>
                 <div class="ltr:text-right rtl:text-left">
                     <a routerLink="/reset-pw" class="text-black dark:text-slate-100">Mot de passe oublié ?</a>
                 </div>
-                <button type="button" routerLink="/accueil/dashboard" class="btn w-full py-3.5 text-base bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]">
-                    Se connecter
+                <button type="submit" class="btn w-full py-3.5 text-base bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85] flex items-center justify-center" [disabled]="loading">
+                    <span *ngIf="!loading">Se connecter</span>
+                    <svg *ngIf="loading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    </svg>
                 </button>
+                <div *ngIf="error" class="mt-2 text-center text-sm text-red-600 bg-red-50 border border-red-200 rounded p-2">
+                    {{ error }}
+                </div>
             </form>
             <p class="mt-5 text-center text-muted">Pas encore membre ? <a routerLink="/signup" class="text-black dark:text-slate-100">Créer un compte</a></p>
         </div>
