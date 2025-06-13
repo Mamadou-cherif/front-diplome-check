@@ -30,8 +30,9 @@ export class LoginComponent {
       password: this.password
     }).subscribe({
       next: (res) => {
-        // Stocke le token ou l'utilisateur si besoin
-        // localStorage.setItem('token', res.token);
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+        }
         this.router.navigate(['/accueil/dashboard']);
       },
       error: (err) => {
