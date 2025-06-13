@@ -1,0 +1,58 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Tables</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Datatables</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Data Table</h2>
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of getPaginatedData()">
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Position }}</td>
+            <td>{{ row.Office }}</td>
+            <td>{{ row.Age }}</td>
+            <td>{{ row['Start date'] }}</td>
+            <!-- Handle property names with spaces or special characters like 'Start date' using bracket notation -->
+            <td>{{ row.Salary }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="flex justify-end mt-4">
+        <nav class="relative z-0 inline-flex shadow-sm">
+          <a href="javascript: void(0);" class="relative inline-flex justify-center items-center space-x-2 border px-4 py-2 -mr-px leading-6 hover:z-10 focus:z-10 border-gray-200 bg-white dark:bg-dark text-black dark:text-slate-100 rounded-l-md " (click)="onPageChange(currentPage - 1)" [class.disabled]="currentPage === 1">Previous</a>
+          <ng-container *ngFor="let page of getPaginationArray()">
+            <a href="javascript: void(0);" class="relative inline-flex justify-center items-center space-x-2 border px-4 py-2 -mr-px leading-6 hover:z-10 focus:z-10 border-gray-200 bg-white dark:bg-dark text-black dark:text-slate-100" (click)="onPageChange(page)" [class.active]="currentPage === page">{{ page }}</a>
+          </ng-container>
+          <a href="javascript: void(0);" class="relative inline-flex justify-center items-center space-x-2 border px-4 py-2 -mr-px leading-6 hover:z-10 focus:z-10 border-gray-200 bg-white dark:bg-dark text-black dark:text-slate-100 rounded-r-md" (click)="onPageChange(currentPage + 1)" [class.disabled]="currentPage === getTotalPages()">Next</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End All Card -->

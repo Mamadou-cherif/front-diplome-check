@@ -1,0 +1,22 @@
+<div class="card">
+  <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Accordion Without Spacing</h2>
+  <div class="border divide-y rounded border-black/10 dark:border-darkborder dark:divide-darkborder divide-black/10">
+    <div *ngFor="let item of [1, 2, 3]" class="">
+      <button type="button" class="flex items-center w-full p-4 text-muted" [ngClass]="{'!text-black dark:!text-white': current === item}" (click)="toggleAccordion(item)">
+        Accordion Item #{{ item }}
+        <div class="ltr:ml-auto rtl:mr-auto" [ngClass]="{'rotate-180': current === item}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-5">
+            <path fill="currentColor" d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z">
+            </path>
+          </svg>
+        </div>
+      </button>
+      <div *ngIf="current === item" class="p-4 space-y-2 border-t text-muted border-black/10 dark:border-darkborder">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

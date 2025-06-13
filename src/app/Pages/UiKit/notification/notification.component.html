@@ -1,0 +1,101 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Elements</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Notification</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Basic Notification</h2>
+      <div *ngIf="toastVisible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] fixed bottom-5 ltr:right-5 rtl:left-5 z-[99999]" [@fadeInOut]>
+        <span>Hello, world! This is a toast message.</span>
+      </div>
+      <button class="btn bg-purple border border-purple rounded-md text-white transition-all duration-300 hover:bg-purple/[0.85] hover:border-purple/[0.85]" (click)="toggleToastMain()">
+        Open Notification
+      </button>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Notification With Close</h2>
+      <div *ngIf="notificationOpen" class="bg-black flex items-start gap-3 text-white py-3 px-4 rounded-md max-w-[250px] fixed bottom-5 ltr:right-5 rtl:left-5 z-[99999]" [@fadeInOut]>
+        <span>Hello, world! This is a toast message.</span>
+        <button type="button" (click)="closeNotification()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5">
+            <path d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z" fill="currentColor"></path>
+          </svg>
+        </button>
+      </div>
+      <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="openNotification()">
+        Click Me!
+      </button>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Position Notification</h2>
+      <div class="flex flex-wrap items-center gap-4">
+        <!-- Top Left -->
+        <div *ngIf="toasts[0].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] fixed top-5 left-5 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(0)">
+          Top Left
+        </button>
+
+        <!-- Top Center -->
+        <div *ngIf="toasts[1].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] mx-auto fixed top-5 left-0 right-0 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(1)">
+          Top Center
+        </button>
+
+        <!-- Top Right -->
+        <div *ngIf="toasts[2].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] fixed top-5 right-5 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(2)">
+          Top Right
+        </button>
+
+        <!-- Bottom Right -->
+        <div *ngIf="toasts[3].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] fixed bottom-5 right-5 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(3)">
+          Bottom Right
+        </button>
+
+        <!-- Bottom Center -->
+        <div *ngIf="toasts[4].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] mx-auto fixed bottom-5 left-0 right-0 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(4)">
+          Bottom Center
+        </button>
+
+        <!-- Bottom Left -->
+        <div *ngIf="toasts[5].visible" class="bg-black text-white py-3 px-4 rounded-md max-w-[220px] fixed bottom-5 left-5 z-[99999]" [@fadeInOut]>
+          <span>Hello, world! This is a toast message.</span>
+        </div>
+        <button class="text-black transition-all duration-300 border rounded-md btn dark:text-slate-100 dark:hover:text-black border-light hover:bg-light hover:text-black" (click)="toggleToast(5)">
+          Bottom Left
+        </button>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Notification Color</h2>
+      <div class="flex flex-wrap items-center gap-4">
+        <ng-container *ngFor="let notification of notifications">
+          <div *ngIf="notification.toastVisible" class="bg-{{ notification.color }} text-white py-3 px-4 rounded-md max-w-[220px] fixed bottom-5 ltr:right-5 rtl:left-5 z-[99999]" [@fadeInOut]>
+            <span>Hello, world! This is a toast message.</span>
+          </div>
+          <button class="transition-all duration-300 border rounded-md btn text-{{ notification.color }} dark:hover:text-black border-{{ notification.color }} hover:bg-{{ notification.color }} hover:text-white" (click)="toggleToastN(notification)">
+            {{ notification.label }}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+  <!-- End All Card -->

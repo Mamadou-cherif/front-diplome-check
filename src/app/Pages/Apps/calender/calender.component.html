@@ -1,0 +1,47 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">apps</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Calender</li>
+  </ul>
+</nav>
+<!-- calender.component.html -->
+
+
+<div class="grid grid-cols-1 gap-x-5 xl:grid-cols-12">
+  <div class="xl:col-span-9">
+    <div class="card">
+      <div class="card-body">
+        <div cursor-pointerid='calendar-container'>
+          <div #calendar></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xl:col-span-3">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="mb-4 text-15">Draggable Events</h6>
+        <div id='external-events' class="flex flex-col gap-3 mb-4">
+          <button data-event='{"title":"General Event", "id": "1"}' data-class="transition-all w-[100%] text-custom-500 !bg-custom-100 dark:!bg-custom-500/20 border-none rounded-md py-1.5 px-3" class='external-event  text-custom-500 btn bg-custom-100/50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20 bg-[#dbeafe] border-[#dbeafe] text-[#3788d8] hover:bg-[#3788d8] hover:text-white'>
+            General Event
+          </button>
+          <button data-event='{"title":"Daily Event", "id": "2"}' data-class="text-green-500 w-[100%] !bg-green-100 dark:!bg-green-500/20 border-none rounded-md py-1.5 px-3" class='external-event text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20 bg-[#d2f4ee] border-[#d2f4ee] text-[#249782] hover:bg-[#249782] hover:text-white'>
+            Daily Event
+          </button>
+          <button data-event='{"title":"Meeting", "id": "3"}' data-class="text-yellow-500 w-[100%] !bg-yellow-100 dark:!bg-yellow-500/20 border-none rounded-md py-1.5 px-3" class='external-event text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20 bg-[#fef9c3] border-[#fef9c3] text-[#eab308] hover:bg-[#eab308] hover:text-white'>
+            Meeting
+          </button>
+          <button data-event='{"title":"Home Event", "id": "4"}' data-class="text-sky-500 w-[100%] !bg-sky-100 dark:!bg-sky-500/20 border-none rounded-md py-1.5 px-3" class='external-event text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20 bg-[#e0f2fe] border-[#e0f2fe] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-white'>
+            Home Event
+          </button>
+          <button data-event='{"title":"Office Event", "id": "5"}' data-class="w-[100%] text-purple-500 !bg-purple-100 dark:!bg-purple-500/20 border-none rounded-md py-1.5 px-3" class='external-event text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20 bg-[#f3e8ff] border-[#f3e8ff] text-[#a855f7] hover:bg-[#a855f7] hover:text-white'>
+            Office Event
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--end col-->
+</div>
+<!--end grid-->

@@ -1,0 +1,81 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Forms</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Checkbox</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <!-- Checkbox Default -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Checkbox Default</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxesDefault" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox" [class]="checkbox.class" [checked]="checkbox.checked" />
+          <span>{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Checkbox Rounded -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Checkbox Rounded</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxesRounded" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox rounded-full" [class]="checkbox.class" [checked]="checkbox.checked" />
+          <span>{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Outline -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Outline</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxesOutline" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox outborder" [class]="checkbox.class" [checked]="checkbox.checked" />
+          <span>{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Outline Rounded -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Outline Rounded</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxesOutlineRounded" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox rounded-full outborder" [class]="checkbox.class" [checked]="checkbox.checked" />
+          <span>{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Checkbox With Text Color -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Checkbox With Text Color</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxesTextColor" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox peer" [class]="checkbox.class" [checked]="checkbox.checked" />
+          <span [class]="checkbox.checked ? 'peer-checked:' + checkbox.class : ''">{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Outline Checkbox With Text Color -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Outline Checkbox With Text Color
+      </h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let checkbox of checkboxes" class="inline-flex cursor-pointer">
+          <input type="checkbox" class="form-checkbox peer" [class]="checkbox.inputClass" [checked]="checkbox.checked" />
+          <span [class]="'peer-checked:text-' + checkbox.color">{{ checkbox.label }}</span>
+        </label>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<!-- End All Card -->

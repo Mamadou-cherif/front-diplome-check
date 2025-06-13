@@ -1,0 +1,16 @@
+<div class="card">
+    <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Accordion Without Arrow</h2>
+    <div class="space-y-2">
+        <div *ngFor="let item of accordionItems; let i = index" class="border rounded border-black/10 dark:border-darkborder">
+            <button type="button" class="w-full p-4 text-start text-muted dark:text-darkmuted" [ngClass]="{ '!text-black': current === i + 1, 'dark:!text-white': current === i + 1 }" (click)="toggleAccordion(i + 1)">
+                Accordion Item #{{ i + 1 }}
+            </button>
+            <div *ngIf="current === i + 1" class="p-4 space-y-2 border-t text-muted border-black/10 dark:text-darkmuted dark:border-darkborder">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

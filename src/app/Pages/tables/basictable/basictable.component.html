@@ -1,0 +1,227 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Tables</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Basic Table</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Table Full Width</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>#</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of fullWidthTableData" class="text-muted">
+              <td>{{ row.id }}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.title }}</td>
+              <td>
+                <span class="inline-block items-center rounded text-xs justify-center px-1.5 py-0.5" [ngClass]="row.roleclass">
+                  {{ row.role }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Table Hover</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full table-hover">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>#</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of hoverTableData" class="text-muted">
+              <td>{{ row.id }}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.title }}</td>
+              <td>{{ row.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Captions With Icon</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>Project Name</th>
+              <th>Assigned to</th>
+              <th>Time Spend</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of captionsTableData">
+              <td>{{ row.project }}</td>
+              <td>
+                <div class="flex items-center -space-x-1.5 rtl:space-x-reverse">
+                  <img *ngFor="let img of row.assignees" class="object-cover w-6 h-6 overflow-hidden rounded-full ring-2 ring-white dark:ring-darkborder" [src]="img" alt="">
+                </div>
+              </td>
+              <td>{{ row.time }}</td>
+              <td [ngClass]="statusClass(row.status)">
+                <span class="h-1.5 w-1.5 rounded-full inline-block relative -top-px bg-current ltr:mr-0.5 rtl:ml-0.5"></span>
+                <span class="ltr:ml-1 rtl:mr-1">{{ row.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Table with checkbox</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>
+                <input type="checkbox" class="form-checkbox outborder-black dark:outborder-purple" (change)="selectAll($event)">
+              </th>
+              <th>Project Name</th>
+              <th>Assigned to</th>
+              <th>Time Spend</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>
+                <input type="checkbox" class="form-checkbox outborder-black dark:outborder-purple" [(ngModel)]="item.selected" (change)="selectItem(item)">
+              </td>
+              <td>{{ item.projectName }}</td>
+              <td>
+                <div class="flex items-center -space-x-1.5 rtl:space-x-reverse">
+                  <img *ngFor="let avatar of item.avatars" class="object-cover w-6 h-6 overflow-hidden rounded-full ring-2 ring-white dark:ring-darkborder" [src]="avatar" alt="">
+                </div>
+              </td>
+              <td>{{ item.timeSpend }}</td>
+              <td [ngClass]="item.statusClass">
+                <span class="h-1.5 w-1.5 rounded-full inline-block relative -top-px bg-current ltr:mr-0.5 rtl:ml-0.5"></span>
+                <span>{{ item.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Captions With Icon</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>Project Name</th>
+              <th>Assigned to</th>
+              <th>Time Spend</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of captionsTableData">
+              <td>{{ row.project }}</td>
+              <td>
+                <div class="flex items-center -space-x-1.5 rtl:space-x-reverse">
+                  <img *ngFor="let img of row.assignees" class="object-cover w-6 h-6 overflow-hidden rounded-full ring-2 ring-white dark:ring-darkborder" [src]="img" alt="">
+                </div>
+              </td>
+              <td>{{ row.time }}</td>
+              <td [ngClass]="statusClass(row.status)">
+                <span class="h-1.5 w-1.5 rounded-full inline-block relative -top-px bg-current ltr:mr-0.5 rtl:ml-0.5"></span>
+                <span class="ltr:ml-1 rtl:mr-1">{{ row.status }}</span>
+              </td>
+              <td>
+                <button class="text-black dark:text-slate-100/80">
+                  <svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline-block w-5 h-5">
+                    <path fill="currentColor" d="M5 18.89H6.41421L15.7279 9.57629L14.3137 8.16207L5 17.4758V18.89ZM21 20.89H3V16.6474L16.435 3.21233C16.8256 2.8218 17.4587 2.8218 17.8492 3.21233L20.6777 6.04075C21.0682 6.43128 21.0682 7.06444 20.6777 7.45497L9.24264 18.89H21V20.89ZM15.7279 6.74786L17.1421 8.16207L18.5563 6.74786L17.1421 5.33365L15.7279 6.74786Z">
+                    </path>
+                  </svg>
+                </button>
+                <button class="text-danger ltr:ml-3 rtl:mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline-block w-5 h-5">
+                    <path fill="currentColor" d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                    </path>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Table Striped</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full table-striped">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>#</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" class="text-muted">
+              <td>{{ employee.id }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.title }}</td>
+              <td>{{ employee.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Table Borderless</h2>
+      <div class="overflow-auto">
+        <table class="min-w-[640px] w-full table-borderless">
+          <thead>
+            <tr class="ltr:text-left rtl:text-right">
+              <th>#</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" class="text-muted">
+              <td>{{ employee.id }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.title }}</td>
+              <td>{{ employee.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End All Card -->

@@ -1,0 +1,42 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-white/80">Components</li>
+    <li class="text-xl font-semibold text-black dark:text-white">Accordions</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Basic Accordion</h2>
+      <div class="space-y-2">
+        <div *ngFor="let item of [1, 2, 3]" class="border rounded border-black/10 dark:border-darkborder">
+          <button type="button" class="flex items-center w-full p-4 text-muted" [ngClass]="{'!text-black dark:!text-white': current === item}" (click)="toggleAccordion(item)">
+            Accordion Item #{{ item }}
+            <div class="ltr:ml-auto rtl:mr-auto" [ngClass]="{'rotate-180': current === item}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-5">
+                <path fill="currentColor" d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z">
+                </path>
+              </svg>
+            </div>
+          </button>
+          <div *ngIf="current === item" class="p-4 space-y-2 border-t text-muted border-black/10 dark:border-darkborder">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-spacing-accordions></app-spacing-accordions>
+
+    <app-color-accordions></app-color-accordions>
+
+    <app-arrow-accordion></app-arrow-accordion>
+  </div>
+</div>
+<!-- End All Card -->

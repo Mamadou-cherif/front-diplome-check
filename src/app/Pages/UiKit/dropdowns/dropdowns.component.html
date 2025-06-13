@@ -1,0 +1,162 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-white/80">Elements</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Dropdowns</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns Default</h2>
+      <div class="flex flex-wrap gap-4">
+        <div *ngFor="let btn of buttons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="flex items-center justify-center btn" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns Rounded</h2>
+      <div class="flex flex-wrap gap-4">
+        <div *ngFor="let btn of roundedButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="btn rounded-full flex items-center justify-center" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns Outline Default</h2>
+      <div class="flex flex-wrap gap-4">
+        <div *ngFor="let btn of outlineButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="flex items-center justify-center btn" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns Outline Rounded
+      </h2>
+      <div class="flex flex-wrap gap-4">
+        <div *ngFor="let btn of roundedOutlineButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="flex items-center justify-center rounded-full btn" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        <div *ngFor="let btn of dropdownButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="flex items-center justify-center btn" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdowns Split Button
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <div *ngFor="let btn of splitButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="inline-flex align-middle" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            <span class="px-2.5 leading-[2.8]">{{ btn.label }}</span>
+            <p class="w-10 h-10 py-3 align-middle bg-white rounded-r bg-opacity-20">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 mx-auto">
+                <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+              </svg>
+            </p>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdown With Icons</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <div *ngFor="let btn of iconButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="p-3" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4 mx-auto" stroke="currentColor" aria-hidden="true">
+              <path [attr.d]="btn.icon"></path> <!-- Use btn.icon instead of iconButtons.icon -->
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Dropdown With Icons</h2>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <div *ngFor="let btn of iconDropdownButtons" class="dropdown" [ngClass]="btn.class">
+          <button type="button" class="flex items-center justify-center btn" [ngClass]="btn.styles" (click)="toggleDropdown(btn)" (keydown.escape)="closeDropdown(btn)">
+            {{ btn.label }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 ltr:ml-1 rtl:mr-1">
+              <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <ul *ngIf="btn.dropdownOpen" class=" whitespace-nowrap">
+            <li><a href="javascript:;">Action</a></li>
+            <li><a href="javascript:;">Another action</a></li>
+            <li><a href="javascript:;">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End All Card -->

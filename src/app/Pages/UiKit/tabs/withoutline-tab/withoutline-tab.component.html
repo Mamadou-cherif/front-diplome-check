@@ -1,0 +1,67 @@
+<div class="card">
+  <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+    Tabs With Underline
+  </h2>
+  <ul class="flex flex-wrap -mb-px text-sm text-center border-b border-black/10 dark:border-darkborder">
+    <li class="ltr:mr-2 rtl:ml-2">
+      <a href="javascript:;" (click)="setActiveTab('profile')" [ngClass]="activeTab === 'profile' ? 'text-purple border-b-2 border-purple' : 'text-muted dark:text-darkmuted dark:hover:text-purple border-b-2 border-transparent rounded-t-lg hover:text-purple hover:border-purple'" class="inline-flex p-4">
+        Profile
+      </a>
+    </li>
+    <li class="ltr:mr-2 rtl:ml-2">
+      <a href="javascript:;" (click)="setActiveTab('dashboard')" [ngClass]="activeTab === 'dashboard' ? 'text-purple border-b-2 border-purple' : 'text-muted dark:text-darkmuted dark:hover:text-purple border-b-2 border-transparent rounded-t-lg hover:text-purple hover:border-purple'" class="inline-flex p-4">
+        Dashboard
+      </a>
+    </li>
+    <li class="ltr:mr-2 rtl:ml-2">
+      <a href="javascript:;" (click)="setActiveTab('settings')" [ngClass]="activeTab === 'settings' ? 'text-purple border-b-2 border-purple' : 'text-muted dark:text-darkmuted dark:hover:text-purple border-b-2 border-transparent rounded-t-lg hover:text-purple hover:border-purple'" class="inline-flex p-4">
+        Settings
+      </a>
+    </li>
+    <li class="ltr:mr-2 rtl:ml-2">
+      <a href="javascript:;" (click)="setActiveTab('contacts')" [ngClass]="activeTab === 'contacts' ? 'text-purple border-b-2 border-purple' : 'text-muted dark:text-darkmuted dark:hover:text-purple border-b-2 border-transparent rounded-t-lg hover:text-purple hover:border-purple'" class="inline-flex p-4">
+        Contacts
+      </a>
+    </li>
+    <li>
+      <a class="inline-block p-4 rounded-t-lg cursor-not-allowed text-muted/50">
+        Disabled
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content mt-3 text-[13px]">
+    <div *ngIf="activeTab === 'profile'">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley
+        of type and scrambled it to make a type specimen book.
+      </p>
+    </div>
+    <div *ngIf="activeTab === 'dashboard'">
+      <p>
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout. The point of
+        using Lorem Ipsum is that it has a more-or-less normal
+        distribution of letters, as opposed to using 'Content here,
+      </p>
+    </div>
+    <div *ngIf="activeTab === 'settings'">
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old. Richard McClintock, a Latin
+        professor at Hampden-Sydney College in Virginia, looked up one of the
+        more obscure Latin words, consectetur,
+      </p>
+    </div>
+    <div *ngIf="activeTab === 'contacts'">
+      <p>
+        There are many variations of passages of Lorem Ipsum available, but the
+        majority have suffered alteration in some form, by injected humour, or
+        randomised words which don't look even slightly
+        believable.
+      </p>
+    </div>
+  </div>
+</div>

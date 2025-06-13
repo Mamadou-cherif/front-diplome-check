@@ -1,0 +1,30 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xs dark:text-slate-100/80">Sliced</li>
+        <li class="text-xl font-semibold text-black dark:text-slate-100">Gallery</li>
+    </ul>
+</nav>
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid grid-cols-1 gap-4">
+        <div class="card p-0">
+            <div class="card-header p-5 border-b border-black/10 dark:border-darkborder">
+                <h2 class="text-base font-semibold capitalize text-slate-800 dark:text-slate-100">New Photos</h2>
+            </div>
+            <div class="card-body p-5 max-w-7xl mx-auto grid gap-2 grid-cols-4 grid-rows-5 zoom-gallery">
+                <div
+                  *ngFor="let image of galleryImages; let i = index"
+                  class="block rounded-lg relative"
+                  [ngClass]="image.classes"
+                  (click)="openLightbox(i)"
+                >
+                  <img
+                    class="absolute inset-0 w-full h-full object-cover object-center rounded-lg"
+                    [src]="image.src"
+                    [alt]="'Image ' + (i + 1)"
+                  />
+                </div>
+              </div>
+              
+        </div>
+    </div>
+</div>

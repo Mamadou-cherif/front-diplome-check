@@ -1,0 +1,81 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Forms</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Radio</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <!-- Radio Default -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Radio Default</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosDefault" class="inline-flex">
+          <input type="radio" name="default_radio" class="form-radio" [class]="radio.class" [checked]="radio.checked" />
+          <span>{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Radio Square -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Radio Square</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosSquare" class="inline-flex">
+          <input type="radio" name="square_radio" class="form-radio rounded" [class]="radio.class" [checked]="radio.checked" />
+          <span>{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Outline -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Outline</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosOutline" class="inline-flex">
+          <input type="radio" name="outline_radio" class="form-radio outborder" [class]="radio.class" [checked]="radio.checked" />
+          <span>{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Radio Outline Square -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Radio Outline Square</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosOutlineSquare" class="inline-flex">
+          <input type="radio" name="outline_square_radio" class="rounded form-radio outborder" [class]="radio.class" [checked]="radio.checked" />
+          <span>{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Radio Outline With Text Color -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Radio Outline With Text Color
+      </h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosOutlineColor" class="inline-flex">
+          <input type="radio" name="rounded_color_radio" class="form-radio peer outborder" [class]="radio.class" [checked]="radio.checked" />
+          <span class="peer-checked:{{ radio.peerCheckedClass }}">{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Radio Outline Square With Text Color -->
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Radio Outline Square With Text
+        Color</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <label *ngFor="let radio of radiosOutlineSquareColor" class="inline-flex">
+          <input type="radio" name="square_color_radio" class="rounded form-radio peer outborder" [class]="radio.class" [checked]="radio.checked" />
+          <span class="peer-checked:{{ radio.peerCheckedClass }}">{{ radio.label }}</span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End All Card -->

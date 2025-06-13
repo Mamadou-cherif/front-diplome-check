@@ -1,0 +1,90 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Components</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Tabs</li>
+  </ul>
+</nav> <!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+        Default Tabs
+      </h2>
+      <div [ngClass]="{'profile': activeTab === 'profile', 'dashboard': activeTab === 'dashboard', 'settings': activeTab === 'settings', 'contacts': activeTab === 'contacts'}">
+        <ul class="flex flex-wrap text-sm text-center border-b border-black/10 dark:border-darkborder">
+          <li class="ltr:mr-2 rtl:ml-2">
+            <a href="javascript:;" (click)="setActiveTab('profile')" [ngClass]="{'bg-purple/10 text-purple': activeTab === 'profile', 'bg-transparent font-normal text-muted dark:hover:text-purple hover:bg-purple/10 hover:text-purple': activeTab !== 'profile'}" class="inline-block p-4 rounded-t-lg">
+              Profile
+            </a>
+          </li>
+          <li class="ltr:mr-2 rtl:ml-2">
+            <a href="javascript:;" (click)="setActiveTab('dashboard')" [ngClass]="{'bg-purple/10 text-purple': activeTab === 'dashboard', 'bg-transparent font-normal text-muted dark:hover:text-purple hover:bg-purple/10 hover:text-purple': activeTab !== 'dashboard'}" class="inline-block p-4 rounded-t-lg">
+              Dashboard
+            </a>
+          </li>
+          <li class="ltr:mr-2 rtl:ml-2">
+            <a href="javascript:;" (click)="setActiveTab('settings')" [ngClass]="{'bg-purple/10 text-purple': activeTab === 'settings', 'bg-transparent font-normal text-muted dark:hover:text-purple hover:bg-purple/10 hover:text-purple': activeTab !== 'settings'}" class="inline-block p-4 rounded-t-lg">
+              Settings
+            </a>
+          </li>
+          <li class="ltr:mr-2 rtl:ml-2">
+            <a href="javascript:;" (click)="setActiveTab('contacts')" [ngClass]="{'bg-purple/10 text-purple': activeTab === 'contacts', 'bg-transparent font-normal text-muted dark:hover:text-purple hover:bg-purple/10 hover:text-purple': activeTab !== 'contacts'}" class="inline-block p-4 rounded-t-lg">
+              Contacts
+            </a>
+          </li>
+          <li>
+            <a class="inline-block p-4 rounded-t-lg cursor-not-allowed text-muted/50">
+              Disabled
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content mt-3 text-[13px]">
+          <div *ngIf="activeTab === 'profile'">
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text ever
+              since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+          <div *ngIf="activeTab === 'dashboard'">
+            <p>
+              It is a long established fact that a reader will be distracted by the
+              readable content of a page when looking at its layout. The point of
+              using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+            </p>
+          </div>
+          <div *ngIf="activeTab === 'settings'">
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It
+              has roots in a piece of classical Latin literature from 45 BC, making it
+              over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of the
+              more obscure Latin words, consectetur,
+            </p>
+          </div>
+          <div *ngIf="activeTab === 'contacts'">
+            <p>
+              There are many variations of passages of Lorem Ipsum available, but the
+              majority have suffered alteration in some form, by injected humour, or
+              randomised words which don't look even slightly
+              believable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-withoutline-tab></app-withoutline-tab>
+
+    <app-with-icons></app-with-icons>
+
+    <app-pills-tab></app-pills-tab>
+
+    <app-bar-tab></app-bar-tab>
+
+    <app-bar-icon-tab></app-bar-icon-tab>
+  </div>
+</div>

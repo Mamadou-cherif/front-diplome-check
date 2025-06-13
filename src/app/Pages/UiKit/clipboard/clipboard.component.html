@@ -1,0 +1,39 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-white/80">Elements</li>
+    <li class="text-xl font-semibold text-black dark:text-white">Clipboard</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Copy From Input</h2>
+      <div class="flex flex-col gap-4">
+        <input type="text" #inputField1 class="form-input" value="Hello, world!">
+        <div class="flex flex-wrap gap-4">
+          <button (click)="copyToClipboard(inputField1)"
+            class="btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]">Copy</button>
+          <button (click)="cutToClipboard(inputField1)"
+            class="btn bg-light border-light text-black hover:bg-light/[0.85] hover:border-light/[0.85]">Cut</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Copy from Textarea</h2>
+      <div class="flex flex-col gap-4">
+        <textarea #inputField2 class="h-auto form-textarea"
+          rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</textarea>
+        <div class="flex flex-wrap gap-4">
+          <button (click)="copyToClipboard(inputField2)"
+            class="btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]">Copy</button>
+          <button (click)="cutToClipboard(inputField2)"
+            class="btn bg-light border-light text-black hover:bg-light/[0.85] hover:border-light/[0.85]">Cut</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End All Card -->

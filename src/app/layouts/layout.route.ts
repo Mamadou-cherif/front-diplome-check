@@ -1,0 +1,108 @@
+import { Routes } from '@angular/router';
+import { DefaultComponent } from '../Pages/Dashboard/default/default.component';
+import { ProjectComponent } from '../Pages/Dashboard/project/project.component';
+import { EcommerceComponent } from '../Pages/Dashboard/ecommerce/ecommerce.component';
+import { ChatComponent } from '../Pages/Apps/chat/chat.component';
+import { ContactComponent } from '../Pages/Apps/contact/contact.component';
+import { InvoiceComponent } from '../Pages/Apps/invoice/invoice.component';
+import { CalenderComponent } from '../Pages/Apps/calender/calender.component';
+import { AlertsComponent } from '../Pages/UiKit/alerts/alerts.component';
+import { AvatarComponent } from '../Pages/UiKit/avatar/avatar.component';
+import { BadgeComponent } from '../Pages/UiKit/badge/badge.component';
+import { BreadcrumbComponent } from '../Pages/UiKit/breadcrumb/breadcrumb.component';
+import { ButtonsComponent } from '../Pages/UiKit/buttons/buttons.component';
+import { ButtonsgroupComponent } from '../Pages/UiKit/buttonsgroup/buttonsgroup.component';
+import { ImagesComponent } from '../Pages/UiKit/images/images.component';
+import { LoaderComponent } from '../Pages/UiKit/loader/loader.component';
+import { PaginationComponent } from '../Pages/UiKit/pagination/pagination.component';
+import { ProgressBarComponent } from '../Pages/UiKit/progress-bar/progress-bar.component';
+import { TooltipsComponent } from '../Pages/UiKit/tooltips/tooltips.component';
+import { TypographyComponent } from '../Pages/UiKit/typography/typography.component';
+import { VideosComponent } from '../Pages/UiKit/videos/videos.component';
+import { DropdownsComponent } from '../Pages/UiKit/dropdowns/dropdowns.component';
+import { ChartComponent } from '../Pages/chart/chart.component';
+import { AccordionsComponent } from '../Pages/UiKit/accordions/accordions.component';
+import { CarouselComponent } from '../Pages/UiKit/carousel/carousel.component';
+import { ClipboardComponent } from '../Pages/UiKit/clipboard/clipboard.component';
+import { CounterComponent } from '../Pages/UiKit/counter/counter.component';
+import { CountdownComponent } from '../Pages/UiKit/countdown/countdown.component';
+import { FlatpickrComponent } from '../Pages/UiKit/flatpickr/flatpickr.component';
+import { LightboxComponent } from '../Pages/UiKit/lightbox/lightbox.component';
+import { ModalsComponent } from '../Pages/UiKit/modals/modals.component';
+import { NotificationComponent } from '../Pages/UiKit/notification/notification.component';
+import { PricingComponent } from '../Pages/UiKit/pricing/pricing.component';
+import { TabsComponent } from '../Pages/UiKit/tabs/tabs.component';
+import { IconsComponent } from '../Pages/icons/icons.component';
+import { DragDropComponent } from '../Pages/drag-drop/drag-drop.component';
+import { BasicComponent } from '../Pages/forms/basic/basic.component';
+import { CheckboxComponent } from '../Pages/forms/checkbox/checkbox.component';
+import { EditorsComponent } from '../Pages/forms/editors/editors.component';
+import { InputGroupComponent } from '../Pages/forms/input-group/input-group.component';
+import { RadioComponent } from '../Pages/forms/radio/radio.component';
+import { SwitchesComponent } from '../Pages/forms/switches/switches.component';
+import { ValidationComponent } from '../Pages/forms/validation/validation.component';
+import { DatatablesComponent } from '../Pages/tables/datatables/datatables.component';
+import { BasictableComponent } from '../Pages/tables/basictable/basictable.component';
+import { EditablesComponent } from '../Pages/tables/editables/editables.component';
+import { ProfileComponent } from '../Pages/users/profile/profile.component';
+import { SettingsComponent } from '../Pages/users/settings/settings.component';
+import { EmailComponent } from '../Pages/Apps/email/email.component';
+import { StarterPageComponent } from '../Pages/other-pages/starter-page/starter-page.component';
+import { GalleryComponent } from '../Pages/Apps/gallery/gallery.component';
+import { KanbanComponent } from '../Pages/Apps/kanban/kanban.component';
+
+export const PAGE_ROUTES: Routes = [
+    { path: '', redirectTo: 'dashboard1', pathMatch: 'full' },
+  { path: 'dashboard1', component: EcommerceComponent },
+  { path: 'project', component: ProjectComponent },
+ // { path: 'ecommerce', component: EcommerceComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'invoice', component: InvoiceComponent },
+  { path: 'email', component: EmailComponent },
+  { path: 'calender', component: CalenderComponent },
+  { path: 'accordions', component: AccordionsComponent },
+  { path: 'alerts', component: AlertsComponent },
+  { path: 'avatar', component: AvatarComponent },
+  { path: 'badge', component: BadgeComponent },
+  { path: 'breadcrumb', component: BreadcrumbComponent },
+  { path: 'buttons', component: ButtonsComponent },
+  { path: 'buttonsgroup', component: ButtonsgroupComponent },
+  { path: 'carousel', component: CarouselComponent },
+  { path: 'clipboard', component: ClipboardComponent },
+  { path: 'counter', component: CounterComponent },
+  { path: 'countdown', component: CountdownComponent },
+  { path: 'dropdowns', component: DropdownsComponent },
+  { path: 'flatpickr', component: FlatpickrComponent },
+  { path: 'images', component: ImagesComponent },
+  { path: 'lightbox', component: LightboxComponent },
+  { path: 'loader', component: LoaderComponent },
+  { path: 'modals', component: ModalsComponent },
+  { path: 'notification', component: NotificationComponent },
+  { path: 'pagination', component: PaginationComponent },
+  { path: 'pricing', component: PricingComponent },
+  { path: 'progress-bar', component: ProgressBarComponent },
+  { path: 'tabs', component: TabsComponent },
+  { path: 'tooltips', component: TooltipsComponent },
+  { path: 'typography', component: TypographyComponent },
+  { path: 'videos', component: VideosComponent },
+  { path: 'chart', component: ChartComponent },
+  { path: 'icons', component: IconsComponent },
+  { path: 'dragdrop', component: DragDropComponent },
+  { path: 'basic', component: BasicComponent },
+  { path: 'checkbox', component: CheckboxComponent },
+  { path: 'editors', component: EditorsComponent },
+  { path: 'input-group', component: InputGroupComponent },
+  { path: 'radio', component: RadioComponent },
+  { path: 'switches', component: SwitchesComponent },
+  { path: 'validation', component: ValidationComponent },
+  { path: 'basic-table', component: BasictableComponent },
+  { path: 'data-table', component: DatatablesComponent },
+  { path: 'edit-table', component: EditablesComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'blank', component: StarterPageComponent },
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'kanban', component: KanbanComponent }
+];
+

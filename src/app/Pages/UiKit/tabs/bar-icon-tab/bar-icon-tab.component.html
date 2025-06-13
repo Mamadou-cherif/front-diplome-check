@@ -1,0 +1,59 @@
+<div class="card">
+  <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Bar with icons</h2>
+  <div [ngClass]="{'dark': true}"> <!-- Add your dynamic classes here if any -->
+
+    <ul class="w-full overflow-hidden text-sm text-center divide-x rounded-lg shadow dark:divide-darkborder dark:shadow-darkborder divide-black/10 sm:flex">
+      <li class="w-full">
+        <a href="javascript:;" (click)="setActiveTab('profile')" [ngClass]="{'text-white bg-purple': activeBarWithIcon === 'profile', 'text-muted bg-transparent hover:text-white dark:text-darkmuted dark:hover:text-white hover:bg-purple': activeBarWithIcon !== 'profile'}" class="inline-flex justify-center w-full p-4 ltr:sm:rounded-l-lg rtl:sm:rounded-r-lg">
+          Profile
+        </a>
+      </li>
+      <li class="w-full">
+        <a href="javascript:;" (click)="setActiveTab('dashboard')" [ngClass]="{'text-white bg-purple': activeBarWithIcon === 'dashboard', 'text-muted bg-transparent hover:text-white dark:text-darkmuted dark:hover:text-white hover:bg-purple': activeBarWithIcon !== 'dashboard'}" class="inline-flex justify-center w-full p-4">
+          Dashboard
+        </a>
+      </li>
+      <li class="w-full">
+        <a href="javascript:;" (click)="setActiveTab('settings')" [ngClass]="{'text-white bg-purple': activeBarWithIcon === 'settings', 'text-muted bg-transparent hover:text-white dark:text-darkmuted dark:hover:text-white hover:bg-purple': activeBarWithIcon !== 'settings'}" class="inline-flex justify-center w-full p-4">
+          Settings
+        </a>
+      </li>
+      <li class="w-full">
+        <a href="javascript:;" (click)="setActiveTab('contacts')" [ngClass]="{'text-white bg-purple': activeBarWithIcon === 'contacts', 'text-muted bg-transparent hover:text-white dark:text-darkmuted dark:hover:text-white hover:bg-purple': activeBarWithIcon !== 'contacts'}" class="inline-flex justify-center w-full p-4 ltr:sm:rounded-r-lg rtl:sm:rounded-l-lg">
+          Contacts
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content mt-3 text-[13px]">
+      <div *ngIf="activeBarWithIcon === 'profile'">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+      </div>
+      <div *ngIf="activeBarWithIcon === 'dashboard'">
+        <p>
+          It is a long established fact that a reader will be distracted by the readable content of a page when
+          looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+          of letters, as opposed to using 'Content here,
+        </p>
+      </div>
+      <div *ngIf="activeBarWithIcon === 'settings'">
+        <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+          Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+          Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
+        </p>
+      </div>
+      <div *ngIf="activeBarWithIcon === 'contacts'">
+        <p>
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+          alteration in some form, by injected humour, or randomised words which don't look even slightly
+          believable.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

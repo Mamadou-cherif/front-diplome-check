@@ -1,0 +1,21 @@
+<div class="card">
+    <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Accordion With Color</h2>
+    <div class="space-y-2" [ngClass]="{ 'dark:border-darkborder': true }">
+        <div *ngFor="let item of accordionItems; let i = index" class="overflow-hidden border rounded border-black/10 dark:border-darkborder">
+            <button type="button" class="flex items-center w-full p-4 text-muted bg-black/5 dark:bg-white/5" [ngClass]="{ 'text-purple !bg-purple/20': current === i + 1 }" (click)="toggleAccordion(i + 1)">
+                Accordion Item #{{ i + 1 }}
+                <div class="ltr:ml-auto rtl:mr-auto" [ngClass]="{ 'rotate-180': current === i + 1 }">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-5">
+                        <path fill="currentColor" d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z"></path>
+                    </svg>
+                </div>
+            </button>
+            <div *ngIf="current === i + 1" class="p-4 space-y-2 border-t text-muted border-black/10 dark:text-darkmuted dark:border-darkborder">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
