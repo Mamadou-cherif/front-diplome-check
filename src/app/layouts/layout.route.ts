@@ -50,10 +50,12 @@ import { EmailComponent } from '../Pages/Apps/email/email.component';
 import { StarterPageComponent } from '../Pages/other-pages/starter-page/starter-page.component';
 import { GalleryComponent } from '../Pages/Apps/gallery/gallery.component';
 import { KanbanComponent } from '../Pages/Apps/kanban/kanban.component';
+import { ListInstitutionComponent } from '../features/institution/list-institution/list-institution.component';
 
 export const PAGE_ROUTES: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: EcommerceComponent },
+  { path: 'institution', component: ListInstitutionComponent },
 
 
 

@@ -44,7 +44,7 @@ export const MENU_ITEMS: MenuGroup[] = [
         icon: 'M13 9H21L11 24V15H4L13 0V9ZM11 11V7.22063L7.53238 13H13V17.3944L17.263 11H11Z',
         link: 'javascript:void(0);',
         submenu: [
-          { label: 'Alerts', link: '/alerts' },
+          { label: 'Liste institutions', link: '/accueil/institution' },
           { label: 'Buttons', link: '/buttons' },
          
         ],

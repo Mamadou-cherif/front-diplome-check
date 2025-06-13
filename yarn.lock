@@ -158,10 +158,10 @@
   optionalDependencies:
     lmdb "3.2.6"
 
-"@angular/cdk@^18.2.14":
-  version "18.2.14"
-  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-18.2.14.tgz"
-  integrity sha512-vDyOh1lwjfVk9OqoroZAP8pf3xxKUvyl+TVR8nJxL4c5fOfUFkD7l94HaanqKSRwJcI2xiztuu92IVoHn8T33Q==
+"@angular/cdk@^19.2.0", "@angular/cdk@19.2.0":
+  version "19.2.0"
+  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-19.2.0.tgz"
+  integrity sha512-FZQtXszPnqUdFFXa+fBCl1NdFvcWvEyQH0O0tlXhc9ZNBvAofKnn1kU1pMQ4krjqRCguyN1oh6M7rA8Ft92yuA==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
@@ -190,7 +190,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@^19.0.0 || ^19.2.0-next.0", "@angular/common@^19.2.0", "@angular/common@>=13.0.0", "@angular/common@12 - 19", "@angular/common@19.2.0":
+"@angular/common@^18.0.0", "@angular/common@^19.0.0 || ^19.2.0-next.0", "@angular/common@^19.0.0 || ^20.0.0", "@angular/common@^19.2.0", "@angular/common@>=13.0.0", "@angular/common@12 - 19", "@angular/common@19.2.0":
   version "19.2.0"
   resolved "https://registry.npmjs.org/@angular/common/-/common-19.2.0.tgz"
   integrity sha512-dm8PR94QY3DucXxltdV5p2Yxyr5bfPlmjOElwLhiTvxWbwCZJTVhPc8dw0TCKzCEu+tKafT48u4BLIB34a0A/g==
@@ -218,17 +218,24 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@^19.0.0 || ^19.2.0-next.0", "@angular/core@^19.2.0", "@angular/core@>=13.0.0", "@angular/core@>=5.0.0", "@angular/core@12 - 19", "@angular/core@19.2.0":
+"@angular/core@^18.0.0", "@angular/core@^19.0.0 || ^19.2.0-next.0", "@angular/core@^19.0.0 || ^20.0.0", "@angular/core@^19.2.0", "@angular/core@>=13.0.0", "@angular/core@>=5.0.0", "@angular/core@12 - 19", "@angular/core@19.2.0":
   version "19.2.0"
   resolved "https://registry.npmjs.org/@angular/core/-/core-19.2.0.tgz"
   integrity sha512-WKTRltOt3MMWWuhRX7Y9RonKxIYjZeBDE6XRwceHMgaEDS2d8I2D3AIuqizRsgHpJqDPnQnH+vxcek4FivcSGA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^19.2.0", "@angular/forms@>=13.0.0", "@angular/forms@>=5.0.0":
+"@angular/forms@^19.0.0 || ^20.0.0", "@angular/forms@^19.2.0", "@angular/forms@>=13.0.0", "@angular/forms@>=5.0.0":
   version "19.2.0"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-19.2.0.tgz"
   integrity sha512-/GHQgiDPUr1vMXCB1O8c+O70DcoZykDBzOICCaz3kTu46rp48g6E6iaZVJoozI0iBwB8+rnuTPQnLWJ46w+wVg==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/material@^19.2.0":
+  version "19.2.0"
+  resolved "https://registry.npmjs.org/@angular/material/-/material-19.2.0.tgz"
+  integrity sha512-lfIIM2BjWPjTjF+ZBf0yM6F2NRtiARhiVrunjM6j43wF+nXq/R/f/mbxBZVbammilBTvfJtw4EBveuLy/65a6Q==
   dependencies:
     tslib "^2.3.0"
 
@@ -239,7 +246,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^19.2.0", "@angular/platform-browser@19.2.0":
+"@angular/platform-browser@^19.0.0 || ^20.0.0", "@angular/platform-browser@^19.2.0", "@angular/platform-browser@19.2.0":
   version "19.2.0"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-19.2.0.tgz"
   integrity sha512-rt3byGZWU0jF6QCLxjP+LH94uL0VM5LgtJ+tYclJqCNB1C3fZrpa86GVd9onVbZmDk0ETUOwm7dQHYdef8oiqw==
@@ -1209,7 +1216,7 @@
     "@ckeditor/ckeditor5-widget" "45.2.0"
     ckeditor5 "45.2.0"
 
-"@ckeditor/ckeditor5-build-classic@^42.0.1":
+"@ckeditor/ckeditor5-build-classic@*", "@ckeditor/ckeditor5-build-classic@^42.0.2":
   version "42.0.2"
   resolved "https://registry.npmjs.org/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-42.0.2.tgz"
   integrity sha512-jzQ54btXx1EL6ioLLGWu0SMSVUqQJAuJC+K18yKaLP48gep6DnZ9unsTtJhkhKOLE21sEGUUnP3GXo/MzMBflw==
@@ -2939,10 +2946,10 @@
   resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.34.8.tgz"
   integrity sha512-U0FaE5O1BCpZSeE6gBl3c5ObhePQSfk9vDRToMmTkbhCOgW4jqvtS5LGyQ76L1fH8sM0keRp4uDTsbjiUyjk0g==
 
-"@rollup/rollup-win32-x64-msvc@4.42.0":
-  version "4.42.0"
-  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.42.0.tgz"
-  integrity sha512-LpHiJRwkaVz/LqjHjK8LCi8osq7elmpwujwbXKNW88bM8eeGxavJIKKjkjpMHAh/2xfnrt1ZSnhTv41WYUHYmA==
+"@rollup/rollup-win32-x64-msvc@4.43.0":
+  version "4.43.0"
+  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.43.0.tgz"
+  integrity sha512-SnGhLiE5rlK0ofq8kzuDkM0g7FN1s5VYY+YSMTibP7CqShxCQvqtNxTARS4xX4PFJfHjG0ZQYX9iGzI3FQh5Aw==
 
 "@schematics/angular@19.2.0":
   version "19.2.0"
@@ -3043,6 +3050,13 @@
   integrity sha512-z9fJ5Im06zvUL548KvYNecEVlA7cVDkGUi6kZusb04mpyEFKCIZJvloCcmpmLaIahDpOQGHaHmG6imtPMmPXGQ==
   dependencies:
     "@types/node" "*"
+
+"@types/ckeditor__ckeditor5-build-classic@^37.0.4":
+  version "37.0.4"
+  resolved "https://registry.npmjs.org/@types/ckeditor__ckeditor5-build-classic/-/ckeditor__ckeditor5-build-classic-37.0.4.tgz"
+  integrity sha512-B8y65g2XOWTJtUQchaIm/WywtWPSzt3hUjjiCSryJpz76XZMEChzZZ/bVRXsgqrR8yvrj+CCR5Q2ISaQiWor0Q==
+  dependencies:
+    "@ckeditor/ckeditor5-build-classic" "*"
 
 "@types/color-convert@2.0.4":
   version "2.0.4"
@@ -7123,32 +7137,32 @@ rollup@^4.30.1, rollup@4.34.8:
     fsevents "~2.3.2"
 
 rollup@^4.34.9:
-  version "4.42.0"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-4.42.0.tgz"
-  integrity sha512-LW+Vse3BJPyGJGAJt1j8pWDKPd73QM8cRXYK1IxOBgL2AGLu7Xd2YOW0M2sLUBCkF5MshXXtMApyEAEzMVMsnw==
+  version "4.43.0"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-4.43.0.tgz"
+  integrity sha512-wdN2Kd3Twh8MAEOEJZsuxuLKCsBEo4PVNLK6tQWAn10VhsVewQLzcucMgLolRlhFybGxfclbPeEYBaP6RvUFGg==
   dependencies:
     "@types/estree" "1.0.7"
   optionalDependencies:
-    "@rollup/rollup-android-arm-eabi" "4.42.0"
-    "@rollup/rollup-android-arm64" "4.42.0"
-    "@rollup/rollup-darwin-arm64" "4.42.0"
-    "@rollup/rollup-darwin-x64" "4.42.0"
-    "@rollup/rollup-freebsd-arm64" "4.42.0"
-    "@rollup/rollup-freebsd-x64" "4.42.0"
-    "@rollup/rollup-linux-arm-gnueabihf" "4.42.0"
-    "@rollup/rollup-linux-arm-musleabihf" "4.42.0"
-    "@rollup/rollup-linux-arm64-gnu" "4.42.0"
-    "@rollup/rollup-linux-arm64-musl" "4.42.0"
-    "@rollup/rollup-linux-loongarch64-gnu" "4.42.0"
-    "@rollup/rollup-linux-powerpc64le-gnu" "4.42.0"
-    "@rollup/rollup-linux-riscv64-gnu" "4.42.0"
-    "@rollup/rollup-linux-riscv64-musl" "4.42.0"
-    "@rollup/rollup-linux-s390x-gnu" "4.42.0"
-    "@rollup/rollup-linux-x64-gnu" "4.42.0"
-    "@rollup/rollup-linux-x64-musl" "4.42.0"
-    "@rollup/rollup-win32-arm64-msvc" "4.42.0"
-    "@rollup/rollup-win32-ia32-msvc" "4.42.0"
-    "@rollup/rollup-win32-x64-msvc" "4.42.0"
+    "@rollup/rollup-android-arm-eabi" "4.43.0"
+    "@rollup/rollup-android-arm64" "4.43.0"
+    "@rollup/rollup-darwin-arm64" "4.43.0"
+    "@rollup/rollup-darwin-x64" "4.43.0"
+    "@rollup/rollup-freebsd-arm64" "4.43.0"
+    "@rollup/rollup-freebsd-x64" "4.43.0"
+    "@rollup/rollup-linux-arm-gnueabihf" "4.43.0"
+    "@rollup/rollup-linux-arm-musleabihf" "4.43.0"
+    "@rollup/rollup-linux-arm64-gnu" "4.43.0"
+    "@rollup/rollup-linux-arm64-musl" "4.43.0"
+    "@rollup/rollup-linux-loongarch64-gnu" "4.43.0"
+    "@rollup/rollup-linux-powerpc64le-gnu" "4.43.0"
+    "@rollup/rollup-linux-riscv64-gnu" "4.43.0"
+    "@rollup/rollup-linux-riscv64-musl" "4.43.0"
+    "@rollup/rollup-linux-s390x-gnu" "4.43.0"
+    "@rollup/rollup-linux-x64-gnu" "4.43.0"
+    "@rollup/rollup-linux-x64-musl" "4.43.0"
+    "@rollup/rollup-win32-arm64-msvc" "4.43.0"
+    "@rollup/rollup-win32-ia32-msvc" "4.43.0"
+    "@rollup/rollup-win32-x64-msvc" "4.43.0"
     fsevents "~2.3.2"
 
 run-applescript@^7.0.0:

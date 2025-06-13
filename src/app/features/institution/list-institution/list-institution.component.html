@@ -1,0 +1,44 @@
+<nav class="w-full mb-4">
+  <ul class="space-y-2 detached-breadcrumb">
+    <li class="text-xs dark:text-slate-100/80">Tables</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Datatables</li>
+  </ul>
+</nav>
+
+<!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+  <div class="grid grid-cols-1 gap-4">
+    <div class="card">
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Liste des Institutions</h2>
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+            <th>Logo</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let institution of institutions">
+            <td>{{ institution.nom }}</td>
+            <td>{{ institution.email }}</td>
+            <td>{{ institution.telephone }}</td>
+            <td>{{ institution.adresse }}</td>
+            <td>
+              <img [src]="institution.logoUrl" alt="Logo" class="h-10 w-10 object-cover">
+            </td>
+            <td>
+              <span [ngClass]="institution.active ? 'text-green-600 font-semibold' : 'text-red-500'">
+                {{ institution.active ? 'Actif' : 'Inactif' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- End All Card -->
