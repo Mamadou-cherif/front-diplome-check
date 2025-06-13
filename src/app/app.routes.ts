@@ -5,18 +5,15 @@ import { ComingSoonComponent } from './Pages/other-pages/coming-soon/coming-soon
 import { Error404Component } from './Pages/other-pages/error-404/error-404.component';
 import { Error500Component } from './Pages/other-pages/error-500/error-500.component';
 import { Error503Component } from './Pages/other-pages/error-503/error-503.component';
-import { SignupComponent } from './Pages/other-pages/signup/signup.component';
-import { LoginComponent } from './Pages/other-pages/login/login.component';
 import { ResetPasswordComponent } from './features/auth/reset-password/reset-password.component';
 import { DefaultComponent } from './Pages/Dashboard/default/default.component';
 
 import { ProjectComponent } from './Pages/Dashboard/project/project.component';
 import { KanbanComponent } from './Pages/Apps/kanban/kanban.component';
 import { EcommerceComponent } from './Pages/Dashboard/ecommerce/ecommerce.component';
+import { LoginComponent } from './features/auth/login/login.component';
 
 export const routes: Routes = [
- 
-
 
   //Auth
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -34,8 +31,7 @@ export const routes: Routes = [
     import('../app/features/model-diplome/model-diplome.route').then((mod) => mod.PAGE_ROUTES),
 },
 
-
-  { path: '**', redirectTo: 'error-404' },
+  ///{ path: '**', redirectTo: 'error-404' },
 
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
@@ -43,7 +39,6 @@ export const routes: Routes = [
   { path: 'error-500', component: Error500Component },
   { path: 'error-503', component: Error503Component },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
 
 

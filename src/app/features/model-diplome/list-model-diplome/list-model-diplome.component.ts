@@ -1,4 +1,5 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 
 // Fake data réaliste pour la table
@@ -40,20 +41,34 @@ const FAKE_DIPLOMA_MODELS = [
   }
 ];
 
+const FAKE_INSTITUTIONS = [
+  { id: 1, name: 'Université de Conakry' },
+  { id: 2, name: 'Université de Kankan' },
+  { id: 3, name: 'Université de Labé' },
+];
+
 @Component({
   selector: 'app-list-model-diplome',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, NgFor, NgIf],
   templateUrl: './list-model-diplome.component.html',
   styleUrl: './list-model-diplome.component.scss'
 })
 export class ListModelDiplomeComponent {
   tableData = FAKE_DIPLOMA_MODELS;
+  institutions = FAKE_INSTITUTIONS;
   currentPage = 1;
   itemsPerPage = 10;
 
   showFieldsModal = false;
   selectedModel: any = null;
+
+  showAddModal = false;
+  addModel = {
+    institutionId: null,
+    modelName: '',
+    fields: [] as any[]
+  };
 
   getPaginatedData() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -80,5 +95,38 @@ export class ListModelDiplomeComponent {
   closeFieldsModal() {
     this.showFieldsModal = false;
     this.selectedModel = null;
+  }
+
+  openAddModal() {
+    this.showAddModal = true;
+    this.addModel = {
+      institutionId: null,
+      modelName: '',
+      fields: []
+    };
+  }
+
+  closeAddModal() {
+    this.showAddModal = false;
+  }
+
+  addFieldRow() {
+    this.addModel.fields.push({ fieldName: '', fieldType: 'String', required: false });
+  }
+
+  removeFieldRow(index: number) {
+    this.addModel.fields.splice(index, 1);
+  }
+
+  submitAddModel() {
+    if (!this.addModel.institutionId || !this.addModel.modelName || this.addModel.fields.length === 0) return;
+    // Ajoute le nouveau modèle à la table (fake, à remplacer par appel API)
+    this.tableData.unshift({
+      ...this.addModel,
+      id: Date.now(),
+      institutionId: this.addModel.institutionId,
+      fields: [...this.addModel.fields]
+    });
+    this.closeAddModal();
   }
 }

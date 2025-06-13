@@ -21,7 +21,7 @@ export const MENU_ITEMS: MenuGroup[] = [
         link: 'javascript:void(0);',
         submenu: [
        
-          { label: 'eCommerce', link: '/ecommerce' },
+          { label: 'Tableau de board', link: '/accueil/dashboard' },
         ],
       }
       
@@ -35,7 +35,7 @@ export const MENU_ITEMS: MenuGroup[] = [
         icon: 'M12 1L21.5 6.5V17.5L12 23L2.5 17.5V6.5L12 1ZM5.49388 7.0777L12.0001 10.8444L18.5062 7.07774L12 3.311L5.49388 7.0777ZM4.5 8.81329V16.3469L11.0001 20.1101V12.5765L4.5 8.81329ZM13.0001 20.11L19.5 16.3469V8.81337L13.0001 12.5765V20.11Z',
         link: 'javascript:void(0);',
         submenu: [
-          { label: 'Models', link: '/tabs' },
+          { label: 'Models', link: '/model/model-diplome' },
           { label: 'Diplomes', link: '/accordions' }
         ],
       },

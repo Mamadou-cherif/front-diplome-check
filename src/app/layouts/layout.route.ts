@@ -52,10 +52,13 @@ import { GalleryComponent } from '../Pages/Apps/gallery/gallery.component';
 import { KanbanComponent } from '../Pages/Apps/kanban/kanban.component';
 
 export const PAGE_ROUTES: Routes = [
-    { path: '', redirectTo: 'dashboard1', pathMatch: 'full' },
-  { path: 'dashboard1', component: EcommerceComponent },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: EcommerceComponent },
+
+
+
+  
   { path: 'project', component: ProjectComponent },
- // { path: 'ecommerce', component: EcommerceComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'invoice', component: InvoiceComponent },
