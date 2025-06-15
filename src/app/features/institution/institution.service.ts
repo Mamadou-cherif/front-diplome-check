@@ -7,8 +7,11 @@ import { environment } from '../../../environments/environment';
 export class InstitutionService {
   constructor(private http: HttpClient) {}
 
-  getInstitutions(): Observable<{ success: boolean; data: any[] }> {
-    return this.http.get<{ success: boolean; data: any[] }>(`${environment.apiUrl}/institutions`);
+  getInstitutions(headers?: any): Observable<{ success: boolean; data: any[] }> {
+    return this.http.get<{ success: boolean; data: any[] }>(
+      `${environment.apiUrl}/institutions`,
+      { headers }
+    );
   }
 
   addInstitution(institution: any): Observable<{ success: boolean; data: any }> {

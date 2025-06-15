@@ -8,36 +8,75 @@
 <!-- Start All Card -->
 <div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
   <div class="grid grid-cols-1 gap-4">
-    <div class="card">
-      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Liste des Institutions</h2>
-      <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Téléphone</th>
-            <th>Adresse</th>
-            <th>Logo</th>
-            <th>Statut</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let institution of institutions">
-            <td>{{ institution.nom }}</td>
-            <td>{{ institution.email }}</td>
-            <td>{{ institution.telephone }}</td>
-            <td>{{ institution.adresse }}</td>
-            <td>
-              <img [src]="institution.logoUrl" alt="Logo" class="h-10 w-10 object-cover">
-            </td>
-            <td>
-              <span [ngClass]="institution.active ? 'text-green-600 font-semibold' : 'text-red-500'">
-                {{ institution.active ? 'Actif' : 'Inactif' }}
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card shadow-lg rounded-lg">
+      <h2 class="mb-4 text-lg font-semibold text-gray-800 text-center">Liste des Institutions</h2>
+      
+      <!-- Bouton Ajouter Institution -->
+      <div class="flex justify-end mb-4">
+        <button class="btn btn-primary flex items-center gap-2 px-4 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition" (click)="openAddModal()">
+          <i class="ri-add-line"></i> Ajouter une Institution
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full border-collapse border border-gray-300 rounded-lg">
+          <thead class="bg-blue-100">
+            <tr>
+              <th class="border border-gray-300 px-4 py-2">Nom</th>
+              <th class="border border-gray-300 px-4 py-2">Email</th>
+              <th class="border border-gray-300 px-4 py-2">Téléphone</th>
+              <th class="border border-gray-300 px-4 py-2">Adresse</th>
+              <th class="border border-gray-300 px-4 py-2">Logo</th>
+              <th class="border border-gray-300 px-4 py-2">Statut</th>
+              <th class="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let institution of getPaginatedData()" class="hover:bg-gray-50">
+              <td class="border border-gray-300 px-4 py-2">{{ institution.nom }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ institution.email }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ institution.telephone }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ institution.adresse }}</td>
+              <td class="border border-gray-300 px-4 py-2">
+                <img [src]="institution.logoUrl" alt="Logo" class="h-12 w-12 object-cover rounded-full">
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <span [ngClass]="institution.active ? 'text-green-600 font-semibold' : 'text-red-500'">
+                  {{ institution.active ? 'Actif' : 'Inactif' }}
+                </span>
+              </td>
+              <td class="border border-gray-300 px-4 py-2 flex gap-2">
+                <button class="btn btn-primary flex items-center gap-2 transition-transform transform hover:scale-105" (click)="viewDetails(institution)">
+                  <i class="ri-eye-line"></i> 
+                </button>
+                <button class="btn btn-warning flex items-center gap-2 transition-transform transform hover:scale-105" (click)="openEditModal(institution)">
+                  <i class="ri-edit-line"></i> 
+                </button>
+                <button class="btn btn-danger flex items-center gap-2 transition-transform transform hover:scale-105" (click)="deleteInstitution(institution.id)">
+                  <i class="ri-delete-bin-line"></i> 
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-center mt-6">
+        <nav class="pagination flex items-center gap-2">
+          <button class="btn btn-secondary px-4 py-2 rounded" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">
+            Précédent
+          </button>
+          <ul class="flex gap-2">
+            <li *ngFor="let page of getPaginationArray()" class="pagination-item">
+              <button class="btn px-4 py-2 rounded" [ngClass]="page === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'" (click)="onPageChange(page)">
+                {{ page }}
+              </button>
+            </li>
+          </ul>
+          <button class="btn btn-secondary px-4 py-2 rounded" [disabled]="currentPage === getTotalPages()" (click)="onPageChange(currentPage + 1)">
+            Suivant
+          </button>
+        </nav>
+      </div>
     </div>
   </div>
 </div>

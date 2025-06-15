@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { InstitutionService } from '../institution.service';
 import { InstitutionModalComponent } from '../institution-modal/institution-modal.component';
 
 @Component({
   selector: 'app-list-institution',
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule, NgxPaginationModule, MatDialogModule],
   standalone: true,
   templateUrl: './list-institution.component.html',
   styleUrls: ['./list-institution.component.scss']
@@ -25,7 +25,11 @@ export class ListInstitutionComponent implements OnInit {
   }
 
   loadInstitutions(): void {
-    this.institutionService.getInstitutions().subscribe({
+    const headers = {
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuLmR1cG9udEBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlJPTEVfSU5TVElUVVRJT04iXSwiaWF0IjoxNzQ4NjUxMzk3LCJleHAiOjE3NDg3Mzc3OTd9.AKwLyOsU6_Cj-RY6QqRphplGdGeZccpfC0Mug5rTWvg'
+    };
+
+    this.institutionService.getInstitutions(headers).subscribe({
       next: (response: { success: boolean; data: any[] }) => {
         if (response.success) {
           this.institutions = response.data;
@@ -61,6 +65,7 @@ export class ListInstitutionComponent implements OnInit {
   }
 
   openEditModal(institution: any): void {
+    console.log('Opening edit modal with institution:', institution);
     const dialogRef = this.dialog.open(InstitutionModalComponent, {
       width: '500px',
       data: institution
@@ -83,12 +88,12 @@ export class ListInstitutionComponent implements OnInit {
     });
   }
 
-  getPaginatedData() {
+  getPaginatedData(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     return this.institutions.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  getTotalPages() {
+  getTotalPages(): number {
     return Math.ceil(this.institutions.length / this.itemsPerPage);
   }
 
@@ -98,5 +103,13 @@ export class ListInstitutionComponent implements OnInit {
 
   getPaginationArray() {
     return new Array(this.getTotalPages()).fill(0).map((_, index) => index + 1);
+  }
+
+  viewDetails(institution: any): void {
+    console.log('Affichage des détails pour l\'institution:', institution);
+  }
+
+  deleteInstitution(id: number): void {
+    console.log('Suppression de l\'institution avec ID:', id);
   }
 }

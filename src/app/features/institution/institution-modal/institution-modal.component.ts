@@ -1,12 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-institution-modal',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './institution-modal.component.html',
   styleUrls: ['./institution-modal.component.scss']
 })
-export class InstitutionModalComponent {
+export class InstitutionModalComponent implements OnInit {
   @Input() institution: any = null; // For editing an institution
   @Output() saveInstitution = new EventEmitter<any>();
   @Output() closeModal = new EventEmitter<void>();
@@ -24,8 +27,10 @@ export class InstitutionModalComponent {
     });
   }
 
-  ngOnChanges(): void {
-    if (this.institution) {
+  ngOnInit(): void {
+    if (!this.institution) {
+      console.error('Erreur : la variable institution est nulle dans InstitutionModalComponent');
+    } else {
       this.institutionForm.patchValue(this.institution);
     }
   }
