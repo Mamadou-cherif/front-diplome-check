@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-institution-modal',
@@ -16,7 +17,13 @@ export class InstitutionModalComponent implements OnInit {
 
   institutionForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<InstitutionModalComponent>
+  ) {
+
+    
     this.institutionForm = this.fb.group({
       nom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -28,11 +35,12 @@ export class InstitutionModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.institution) {
-      console.error('Erreur : la variable institution est nulle dans InstitutionModalComponent');
-    } else {
+    // If data is provided, it means we are editing an existing institution
+    this.institution = this.data || null;
+
+    if (this.institution != null) {
       this.institutionForm.patchValue(this.institution);
-    }
+    } 
   }
 
   save(): void {

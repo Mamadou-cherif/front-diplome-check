@@ -26,7 +26,6 @@
               <th class="border border-gray-300 px-4 py-2">Email</th>
               <th class="border border-gray-300 px-4 py-2">Téléphone</th>
               <th class="border border-gray-300 px-4 py-2">Adresse</th>
-              <th class="border border-gray-300 px-4 py-2">Logo</th>
               <th class="border border-gray-300 px-4 py-2">Statut</th>
               <th class="border border-gray-300 px-4 py-2">Actions</th>
             </tr>
@@ -37,9 +36,9 @@
               <td class="border border-gray-300 px-4 py-2">{{ institution.email }}</td>
               <td class="border border-gray-300 px-4 py-2">{{ institution.telephone }}</td>
               <td class="border border-gray-300 px-4 py-2">{{ institution.adresse }}</td>
-              <td class="border border-gray-300 px-4 py-2">
+              <!-- <td class="border border-gray-300 px-4 py-2">
                 <img [src]="institution.logoUrl" alt="Logo" class="h-12 w-12 object-cover rounded-full">
-              </td>
+              </td> -->
               <td class="border border-gray-300 px-4 py-2">
                 <span [ngClass]="institution.active ? 'text-green-600 font-semibold' : 'text-red-500'">
                   {{ institution.active ? 'Actif' : 'Inactif' }}

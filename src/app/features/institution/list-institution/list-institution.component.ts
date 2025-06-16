@@ -65,7 +65,6 @@ export class ListInstitutionComponent implements OnInit {
   }
 
   openEditModal(institution: any): void {
-    console.log('Opening edit modal with institution:', institution);
     const dialogRef = this.dialog.open(InstitutionModalComponent, {
       width: '500px',
       data: institution
