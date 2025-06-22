@@ -13,7 +13,7 @@
       
       <!-- Bouton Ajouter Institution -->
       <div class="flex justify-end mb-4">
-        <button class="btn btn-primary flex items-center gap-2 px-4 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition" (click)="openAddModal()">
+        <button class="btn btn-primary flex items-center gap-2 px-4 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition" (click)="openAddAndUpdateModal()">
           <i class="ri-add-line"></i> Ajouter une Institution
         </button>
       </div>
@@ -48,6 +48,7 @@
                 <button class="btn btn-primary flex items-center gap-2 transition-transform transform hover:scale-105" (click)="viewDetails(institution)">
                   <i class="ri-eye-line"></i> 
                 </button>
+              
                 <button class="btn btn-warning flex items-center gap-2 transition-transform transform hover:scale-105" (click)="openEditModal(institution)">
                   <i class="ri-edit-line"></i> 
                 </button>

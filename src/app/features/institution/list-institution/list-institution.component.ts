@@ -17,6 +17,7 @@ export class ListInstitutionComponent implements OnInit {
   institutions: any[] = [];
   currentPage = 1;
   itemsPerPage = 10;
+  action=''
 
   constructor(private institutionService: InstitutionService, private dialog: MatDialog) {}
 
@@ -25,11 +26,8 @@ export class ListInstitutionComponent implements OnInit {
   }
 
   loadInstitutions(): void {
-    const headers = {
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuLmR1cG9udEBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlJPTEVfSU5TVElUVVRJT04iXSwiaWF0IjoxNzQ4NjUxMzk3LCJleHAiOjE3NDg3Mzc3OTd9.AKwLyOsU6_Cj-RY6QqRphplGdGeZccpfC0Mug5rTWvg'
-    };
 
-    this.institutionService.getInstitutions(headers).subscribe({
+    this.institutionService.getInstitutions().subscribe({
       next: (response: { success: boolean; data: any[] }) => {
         if (response.success) {
           this.institutions = response.data;
@@ -41,22 +39,39 @@ export class ListInstitutionComponent implements OnInit {
     });
   }
 
-  openAddModal(): void {
+  openAddAndUpdateModal(): void {
     const dialogRef = this.dialog.open(InstitutionModalComponent, {
       width: '500px',
       data: null
     });
 
     dialogRef.componentInstance.saveInstitution.subscribe((institution: any) => {
-      this.institutionService.addInstitution(institution).subscribe({
-        next: () => {
-          this.loadInstitutions();
-          dialogRef.close();
-        },
-        error: (err: any) => {
-          console.error('Erreur lors de l\'ajout de l\'institution', err);
-        }
-      });
+
+      if (institution?.id === '') {
+              console.log('Saving institution:', institution);
+
+        this.institutionService.addInstitution(institution).subscribe({
+          next: () => {
+            this.loadInstitutions();
+            dialogRef.close();
+          },
+          error: (err: any) => {
+            console.error('Erreur lors de l\'ajout de l\'institution', err);
+          }
+        });
+      }
+      else {
+        console
+        this.institutionService.updateInstitution(institution).subscribe({
+          next: () => {
+            this.loadInstitutions();
+            dialogRef.close();
+          },
+          error: (err: any) => {
+            console.error('Erreur lors de la mise à jour de l\'institution', err);
+          }
+        });
+      }
     });
 
     dialogRef.componentInstance.closeModal.subscribe(() => {
@@ -105,7 +120,26 @@ export class ListInstitutionComponent implements OnInit {
   }
 
   viewDetails(institution: any): void {
-    console.log('Affichage des détails pour l\'institution:', institution);
+    
+    console.log('Affichage des détails de l\'institution:', institution);
+
+    const dialogRef = this.dialog.open(InstitutionModalComponent, {
+      width: '500px',
+      data: {institution, viewOnly: true}
+    });
+
+    dialogRef.componentInstance.saveInstitution.subscribe((updatedInstitution: any) => {
+      this.institutionService.updateInstitution(updatedInstitution).subscribe({
+        next: () => {
+          this.loadInstitutions();
+          dialogRef.close();
+        },
+        error: (err: any) => {
+          console.error('Erreur lors de la mise à jour de l\'institution', err);
+        }
+      });
+    });
+
   }
 
   deleteInstitution(id: number): void {

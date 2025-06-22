@@ -1,32 +1,44 @@
 <div class="modal-header bg-blue-500 text-white p-4 rounded-t">
-  <h5 class="modal-title text-lg font-bold">{{ institution ? 'Modifier Institution' : 'Ajouter Institution' }}</h5>
+
+  <ng-container *ngIf="this.data?.viewOnly">
+      <h5 class="modal-title text-lg font-bold">Détails d'une institution</h5>
+  </ng-container>
+  <ng-container *ngIf="!this.data?.viewOnly">
+      <h5 class="modal-title text-lg font-bold">{{ institution ? 'Modifier Institution' : 'Ajouter Institution' }}</h5>
+  </ng-container>
+  
+
+  
+ 
   <button type="button" class="btn-close text-white" (click)="close()">&times;</button>
 </div>
 <div class="modal-body p-6 bg-gray-100">
   <form [formGroup]="institutionForm" class="space-y-4">
     <div>
       <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
-      <input id="nom" type="text" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="nom">
+      <input id="nom" type="text" [readonly]="this.data?.viewOnly" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="nom">
     </div>
     <div>
       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-      <input id="email" type="email" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="email">
+      <input id="email" type="email" [readonly]="this.data?.viewOnly" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="email">
     </div>
     <div>
       <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-      <input id="telephone" type="text" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="telephone">
+      <input id="telephone" type="text" [readonly]="this.data?.viewOnly" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="telephone">
     </div>
     <div>
       <label for="adresse" class="block text-sm font-medium text-gray-700">Adresse</label>
-      <input id="adresse" type="text" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="adresse">
+      <input id="adresse" type="text" [readonly]="this.data?.viewOnly" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="adresse">
     </div>
     <div>
       <label for="logoUrl" class="block text-sm font-medium text-gray-700">Logo URL</label>
-      <input id="logoUrl" type="text" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="logoUrl">
+      <input id="logoUrl" type="text" [readonly]="this.data?.viewOnly" class="form-control w-full border border-gray-300 rounded-md p-2" formControlName="logoUrl">
     </div>
   </form>
 </div>
 <div class="modal-footer bg-gray-200 p-4 rounded-b flex justify-end gap-4">
   <button type="button" class="btn btn-secondary px-4 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-600" (click)="close()">Annuler</button>
-  <button type="button" class="btn btn-primary px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" (click)="save()">Enregistrer</button>
+  @if (this.data?.viewOnly !== true) {
+    <button type="button" class="btn btn-primary px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" (click)="save()">Enregistrer</button>
+  }
 </div>

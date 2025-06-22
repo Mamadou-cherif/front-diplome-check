@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './institution-modal.component.html',
   styleUrls: ['./institution-modal.component.scss']
 })
-export class InstitutionModalComponent implements OnInit {
+export class InstitutionModalComponent implements OnInit, OnDestroy {
   @Input() institution: any = null; // For editing an institution
   @Output() saveInstitution = new EventEmitter<any>();
   @Output() closeModal = new EventEmitter<void>();
@@ -25,6 +25,7 @@ export class InstitutionModalComponent implements OnInit {
 
     
     this.institutionForm = this.fb.group({
+      id: [''], // Optional, for editing existing institutions
       nom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', Validators.required],
@@ -33,14 +34,20 @@ export class InstitutionModalComponent implements OnInit {
       active: [true]
     });
   }
+  ngOnDestroy(): void {
+      this.closeModal.emit();
+  }
 
   ngOnInit(): void {
     // If data is provided, it means we are editing an existing institution
     this.institution = this.data || null;
 
-    if (this.institution != null) {
+    if (this.institution != null && this.data.viewOnly !== true) {
       this.institutionForm.patchValue(this.institution);
     } 
+    else{
+      this.institutionForm.patchValue(this.institution?.institution);
+    }
   }
 
   save(): void {
@@ -50,6 +57,6 @@ export class InstitutionModalComponent implements OnInit {
   }
 
   close(): void {
-    this.closeModal.emit();
+    this.dialogRef.close();
   }
 }

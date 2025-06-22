@@ -5,7 +5,9 @@ import { environment } from '../../../environments/environment';
 import { LoginRequest } from './login/login-request.model';
 import { RegisterRequest } from './signup/register-request.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   constructor(private http: HttpClient) {}
 

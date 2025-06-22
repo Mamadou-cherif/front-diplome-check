@@ -5,12 +5,15 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class InstitutionService {
-  constructor(private http: HttpClient) {}
+  public token: string | null = null;
+  
+  constructor(private http: HttpClient) {
+     this.token = sessionStorage.getItem('token');
+  }
 
-  getInstitutions(headers?: any): Observable<{ success: boolean; data: any[] }> {
+  getInstitutions(): Observable<{ success: boolean; data: any[] }> {
     return this.http.get<{ success: boolean; data: any[] }>(
-      `${environment.apiUrl}/institutions`,
-      { headers }
+      `${environment.apiUrl}/institutions`
     );
   }
 

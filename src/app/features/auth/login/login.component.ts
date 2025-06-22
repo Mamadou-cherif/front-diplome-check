@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginRequest } from './login-request.model';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-login',
+    standalone: true,
     imports: [RouterLink,FormsModule, CommonModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
@@ -21,7 +21,10 @@ export class LoginComponent {
   loading = false;
   error: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+     private router: Router
+    ) {}
 
   login() {
     this.loading = true;
@@ -33,9 +36,10 @@ export class LoginComponent {
     this.authService.login(data).subscribe({
       next: (res) => {
         if (res.token) {
-          localStorage.setItem('token', res.token);
+          sessionStorage.setItem('token', res.token);
+          this.router.navigate(['/accueil/dashboard']);
         }
-        this.router.navigate(['/accueil/dashboard']);
+        
       },
       error: (err) => {
         this.error = err?.error?.message || 'Erreur de connexion';

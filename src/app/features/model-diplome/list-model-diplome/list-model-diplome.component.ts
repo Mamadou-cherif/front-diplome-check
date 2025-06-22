@@ -1,51 +1,8 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
-
-// Fake data réaliste pour la table
-const FAKE_DIPLOMA_MODELS = [
-  {
-    id: 1,
-    institutionId: 1,
-    modelName: 'Licence en Économie',
-    fields: [
-      { id: 1, fieldName: 'nom', fieldType: 'String', required: true },
-      { id: 2, fieldName: 'prénoms', fieldType: 'String', required: true },
-      { id: 3, fieldName: 'email', fieldType: 'String', required: true },
-      { id: 4, fieldName: 'date de naissance', fieldType: 'String', required: true },
-      { id: 5, fieldName: 'télephone', fieldType: 'String', required: true },
-      { id: 6, fieldName: "année d'obtention", fieldType: 'String', required: true },
-    ]
-  },
-  {
-    id: 2,
-    institutionId: 1,
-    modelName: 'Doctorat en Médecine',
-    fields: [
-      { id: 7, fieldName: 'nom', fieldType: 'String', required: true },
-      { id: 8, fieldName: 'prénoms', fieldType: 'String', required: true },
-      { id: 9, fieldName: 'moyenne générale', fieldType: 'String', required: true },
-      { id: 10, fieldName: 'mention', fieldType: 'String', required: false },
-    ]
-  },
-  {
-    id: 3,
-    institutionId: 2,
-    modelName: 'Master Informatique',
-    fields: [
-      { id: 11, fieldName: 'nom', fieldType: 'String', required: true },
-      { id: 12, fieldName: 'prénoms', fieldType: 'String', required: true },
-      { id: 13, fieldName: 'spécialité', fieldType: 'String', required: true },
-      { id: 14, fieldName: 'année d\'obtention', fieldType: 'String', required: true },
-    ]
-  }
-];
-
-const FAKE_INSTITUTIONS = [
-  { id: 1, name: 'Université de Conakry' },
-  { id: 2, name: 'Université de Kankan' },
-  { id: 3, name: 'Université de Labé' },
-];
+import { Component, OnInit } from '@angular/core';
+import { ModelDiplomeService } from '../model-diplome.service';
+import { InstitutionService } from '../../institution/institution.service';
 
 @Component({
   selector: 'app-list-model-diplome',
@@ -54,11 +11,12 @@ const FAKE_INSTITUTIONS = [
   templateUrl: './list-model-diplome.component.html',
   styleUrl: './list-model-diplome.component.scss'
 })
-export class ListModelDiplomeComponent {
-  tableData = FAKE_DIPLOMA_MODELS;
-  institutions = FAKE_INSTITUTIONS;
+export class ListModelDiplomeComponent implements OnInit {
+  tableData: any[] = [];
+  institutions: any[] = [];
   currentPage = 1;
   itemsPerPage = 10;
+  totalPages = 1;
 
   showFieldsModal = false;
   selectedModel: any = null;
@@ -70,17 +28,52 @@ export class ListModelDiplomeComponent {
     fields: [] as any[]
   };
 
+  constructor(
+    private modelDiplomeService: ModelDiplomeService,
+    private institutionService: InstitutionService // Assuming you have a service for institutions
+  ) {}
+
+  ngOnInit(): void {
+    this.loadDiplomaModels();
+    // Vous pouvez charger les institutions ici si besoin via un service
+    this.loadInstitutions();
+  }
+
+
+  public loadInstitutions(): void {
+    this.institutionService.getInstitutions().subscribe({
+      next: (response) => {
+        this.institutions = response.data;
+      },
+      error: (err) => {
+        console.error('Erreur lors de la récupération des institutions', err);
+      }
+    });
+  }
+  loadDiplomaModels(): void {
+    // L'API commence à la page 0, donc on soustrait 1 à currentPage
+    this.modelDiplomeService.getDiplomaModels(this.currentPage - 1, this.itemsPerPage).subscribe({
+      next: (response) => {
+        this.tableData = response.data.content;
+        this.totalPages = response.data.totalPages;
+      },
+      error: (err) => {
+        console.error('Erreur lors de la récupération des modèles de diplômes', err);
+      }
+    });
+  }
+
   getPaginatedData() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.tableData.slice(startIndex, startIndex + this.itemsPerPage);
+    return this.tableData;
   }
 
   getTotalPages() {
-    return Math.ceil(this.tableData.length / this.itemsPerPage);
+    return this.totalPages;
   }
 
   onPageChange(pageNumber: number) {
     this.currentPage = pageNumber;
+    this.loadDiplomaModels();
   }
 
   getPaginationArray() {
@@ -97,7 +90,7 @@ export class ListModelDiplomeComponent {
     this.selectedModel = null;
   }
 
-  openAddModal() {
+  openAddAndUpdateModal() {
     this.showAddModal = true;
     this.addModel = {
       institutionId: null,
@@ -120,13 +113,14 @@ export class ListModelDiplomeComponent {
 
   submitAddModel() {
     if (!this.addModel.institutionId || !this.addModel.modelName || this.addModel.fields.length === 0) return;
-    // Ajoute le nouveau modèle à la table (fake, à remplacer par appel API)
-    this.tableData.unshift({
-      ...this.addModel,
-      id: Date.now(),
-      institutionId: this.addModel.institutionId,
-      fields: [...this.addModel.fields]
+    this.modelDiplomeService.addDiplomaModel(this.addModel).subscribe({
+      next: () => {
+        this.closeAddModal();
+        this.loadDiplomaModels();
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'ajout du modèle', err);
+      }
     });
-    this.closeAddModal();
   }
 }
