@@ -21,6 +21,10 @@ export class InstitutionService {
     return this.http.post<{ success: boolean; data: any }>(`${environment.apiUrl}/institutions`, institution);
   }
 
+  deleteInstitution(id: number): Observable<{ success: boolean; data: any }> {
+    return this.http.delete<{ success: boolean; data: any }>(`${environment.apiUrl}/institutions/${id}`);
+  }
+
   updateInstitution(institution: any): Observable<{ success: boolean; data: any }> {
     return this.http.put<{ success: boolean; data: any }>(`${environment.apiUrl}/institutions/${institution.id}`, institution);
   }

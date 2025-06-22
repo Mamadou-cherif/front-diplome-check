@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { InstitutionService } from '../institution.service';
 import { InstitutionModalComponent } from '../institution-modal/institution-modal.component';
+import { ToastService } from '../../../shared/toast.service';
 
 @Component({
   selector: 'app-list-institution',
@@ -19,7 +20,9 @@ export class ListInstitutionComponent implements OnInit {
   itemsPerPage = 10;
   action=''
 
-  constructor(private institutionService: InstitutionService, private dialog: MatDialog) {}
+  constructor(
+    private _toastService: ToastService,
+    private institutionService: InstitutionService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadInstitutions();
@@ -32,10 +35,13 @@ export class ListInstitutionComponent implements OnInit {
         if (response.success) {
           this.institutions = response.data;
         }
+        else{
+           this._toastService.error('Erreur lors du chargement des institutions');
+        }
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des institutions', err);
-      }
+        this._toastService.error('Erreur lors du chargement des institutions');
+        console.error('Erreur lors du chargement des institutions', err);}
     });
   }
 
@@ -51,23 +57,37 @@ export class ListInstitutionComponent implements OnInit {
               console.log('Saving institution:', institution);
 
         this.institutionService.addInstitution(institution).subscribe({
-          next: () => {
+          next: (data: any) => {
+           if(data?.success){
             this.loadInstitutions();
-            dialogRef.close();
+            this._toastService.success('Institution ajoutée avec succès');
+           }
+           else {
+            this._toastService.error('Erreur lors de l\'ajout de l\'institution');
+           }
+            
+           dialogRef.close();
           },
           error: (err: any) => {
+              this._toastService.error('Erreur lors de l\'ajout de l\'institution');
             console.error('Erreur lors de l\'ajout de l\'institution', err);
           }
         });
       }
       else {
-        console
         this.institutionService.updateInstitution(institution).subscribe({
-          next: () => {
-            this.loadInstitutions();
-            dialogRef.close();
+          next: (data) => {
+            if(data?.success){
+               this.loadInstitutions();
+               this._toastService.success('Institution mise à jour avec succès');
+            }
+            else {
+              this._toastService.error('Erreur lors de la mise à jour de l\'institution');
+            }
+           dialogRef.close();
           },
           error: (err: any) => {
+            this._toastService.error('Erreur lors de la mise à jour de l\'institution');
             console.error('Erreur lors de la mise à jour de l\'institution', err);
           }
         });
@@ -87,11 +107,18 @@ export class ListInstitutionComponent implements OnInit {
 
     dialogRef.componentInstance.saveInstitution.subscribe((updatedInstitution: any) => {
       this.institutionService.updateInstitution(updatedInstitution).subscribe({
-        next: () => {
-          this.loadInstitutions();
-          dialogRef.close();
+        next: (data) => {
+          if(data?.success){
+              this.loadInstitutions();
+          this._toastService.success('Institution mise à jour avec succès');
+          }
+          else{
+          this._toastService.error('Erreur lors de la mise à jour de l\'institution');
+          }
+        dialogRef.close();
         },
         error: (err: any) => {
+          this._toastService.error('Erreur lors de la mise à jour de l\'institution');
           console.error('Erreur lors de la mise à jour de l\'institution', err);
         }
       });
@@ -121,7 +148,6 @@ export class ListInstitutionComponent implements OnInit {
 
   viewDetails(institution: any): void {
     
-    console.log('Affichage des détails de l\'institution:', institution);
 
     const dialogRef = this.dialog.open(InstitutionModalComponent, {
       width: '500px',
@@ -142,7 +168,31 @@ export class ListInstitutionComponent implements OnInit {
 
   }
 
-  deleteInstitution(id: number): void {
-    console.log('Suppression de l\'institution avec ID:', id);
+  async deleteInstitution(id: number): Promise<void> {
+    const confirmed = await this._toastService.confirm({
+      title: 'Êtes-vous sûr ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      confirmButtonText: 'Oui, supprimer',
+      cancelButtonText: 'Non'
+    });
+
+    if (confirmed) {
+      this.institutionService.deleteInstitution(id).subscribe({
+        next: (data) => {
+          if(data.success){
+            this._toastService.success('Institution supprimée avec succès');
+            this.loadInstitutions();
+          }
+          else{
+            this._toastService.error('Erreur lors de la suppression de l\'institution');
+          }
+        },
+        error: (err: any) => {
+          this._toastService.error('Erreur lors de la suppression de l\'institution');
+          console.error('Erreur lors de la suppression de l\'institution', err);
+        }
+      });
+    }
   }
 }
