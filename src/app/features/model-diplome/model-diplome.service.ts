@@ -14,7 +14,19 @@ export class ModelDiplomeService {
     return this.http.get<any>(url);
   }
 
-    addDiplomaModel(model: any) {
-     return this.http.post<any>(`${environment.apiUrl}/diploma-models`, model);
-    }
+  addDiplomaModel(model: any) {
+    return this.http.post<any>(`${environment.apiUrl}/diploma-models`, model);
+  }
+
+  getDiplomaModelById(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/diploma-models/${id}`);
+  }
+
+  updateDiplomaModel(id: number, model: any): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/diploma-models/${id}`, model);
+  }
+
+  deleteDiplomaModel(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/diploma-models/${id}`);
+  }
 }
