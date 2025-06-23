@@ -35,8 +35,8 @@ export const MENU_ITEMS: MenuGroup[] = [
         icon: 'M12 1L21.5 6.5V17.5L12 23L2.5 17.5V6.5L12 1ZM5.49388 7.0777L12.0001 10.8444L18.5062 7.07774L12 3.311L5.49388 7.0777ZM4.5 8.81329V16.3469L11.0001 20.1101V12.5765L4.5 8.81329ZM13.0001 20.11L19.5 16.3469V8.81337L13.0001 12.5765V20.11Z',
         link: 'javascript:void(0);',
         submenu: [
-          { label: 'Models', link: '/model/model-diplome' },
-          { label: 'Diplomes', link: '/accordions' }
+          { label: 'Liste des Modeles', link: '/model/model-diplome' },
+          { label: 'Liste des Diplomes', link: '/accordions' }
         ],
       },
       {
@@ -45,8 +45,7 @@ export const MENU_ITEMS: MenuGroup[] = [
         link: 'javascript:void(0);',
         submenu: [
           { label: 'Liste institutions', link: '/accueil/institution' },
-          { label: 'Buttons', link: '/buttons' },
-         
+          { label: 'Activer une institution', link: '/accueil/institution' },
         ],
       }
     ],
@@ -55,11 +54,19 @@ export const MENU_ITEMS: MenuGroup[] = [
     label: 'Utilisateurs et Roles',
     items: [
       {
-        label: 'Liste des utilisateurs',
+        label: 'Utilisateurs',
         icon: 'M21 8V20.9932C21 21.5501 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.4487 2 4.00221 2H14.9968L21 8ZM19 9H14V4H5V20H19V9ZM8 7H11V9H8V7ZM8 11H16V13H8V11ZM8 15H16V17H8V15Z',
         link: 'javascript:void(0);',
         submenu: [
-          { label: 'Affectation/Role', link: '/basic' }
+          { label: 'Liste des utilisateurs', link: '/accueil/user' }
+        ],
+      },
+      {
+        label: 'Roles',
+        icon: 'M21 8V20.9932C21 21.5501 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.4487 2 4.00221 2H14.9968L21 8ZM19 9H14V4H5V20H19V9ZM8 7H11V9H8V7ZM8 11H16V13H8V11ZM8 15H16V17H8V15Z',
+        link: 'javascript:void(0);',
+        submenu: [
+          { label: 'Liste des roles', link: '/basic' }
         ],
       }
     ],

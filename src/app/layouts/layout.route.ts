@@ -51,11 +51,13 @@ import { StarterPageComponent } from '../Pages/other-pages/starter-page/starter-
 import { GalleryComponent } from '../Pages/Apps/gallery/gallery.component';
 import { KanbanComponent } from '../Pages/Apps/kanban/kanban.component';
 import { ListInstitutionComponent } from '../features/institution/list-institution/list-institution.component';
+import { ListUserComponent } from '../features/utilisateur/list-user/list-user.component';
 
 export const PAGE_ROUTES: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: EcommerceComponent },
   { path: 'institution', component: ListInstitutionComponent },
+  { path: 'user', component: ListUserComponent },
 
 
 

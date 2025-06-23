@@ -5,6 +5,7 @@ import { RegisterRequest } from './register-request.model';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastService } from '../../../shared/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,11 @@ export class SignupComponent {
   error: string | null = null;
   success: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private toastService: ToastService,
+     private router: Router
+    ) {}
 
   register() {
     this.loading = true;
@@ -49,6 +54,7 @@ export class SignupComponent {
     this.authService.register(data).subscribe({
       next: (res) => {
         this.success = 'Inscription réussie ! Vous pouvez vous connecter.';
+        this.toastService
          this.router.navigate(['/login']);
       },
       error: (err) => {

@@ -1,7 +1,7 @@
 <nav class="w-full mb-4">
   <ul class="space-y-2 detached-breadcrumb">
-    <li class="text-xs dark:text-slate-100/80">Tables</li>
-    <li class="text-xl font-semibold text-black dark:text-slate-100">Datatables</li>
+    <li class="text-xs dark:text-slate-100/80">Diplome</li>
+    <li class="text-xl font-semibold text-black dark:text-slate-100">Models</li>
   </ul>
 </nav>
 
@@ -9,7 +9,7 @@
 <div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
   <div class="grid grid-cols-1 gap-4">
     <div class="card">
-      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Data Table</h2>
+      <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">Liste des modèles de diplômes</h2>
       <div class="flex justify-end mb-4">
         <button (click)="openAddAndUpdateModal()" class="flex items-center gap-2 px-4 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,7 +92,12 @@
       <div *ngIf="showAddModal" class="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
         <div class="bg-white rounded-2xl shadow-2xl p-8 min-w-[340px] max-w-[95vw] w-full sm:w-[480px] relative animate-fade-in">
           <button (click)="closeAddModal()" class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold focus:outline-none transition">&times;</button>
-          <h3 class="text-xl font-bold text-purple mb-6 text-center">Ajouter un modèle de diplôme</h3>
+          @if (this.editModel) {
+            <h3 class="text-xl font-bold text-purple mb-6 text-center">Modifier ce modèle de diplôme</h3>
+          } @else {
+            <h3 class="text-xl font-bold text-purple mb-6 text-center">Ajouter un modèle de diplôme</h3>
+          }
+          <!-- <h3 class="text-xl font-bold text-purple mb-6 text-center">Ajouter un modèle de diplôme</h3> -->
           <form (ngSubmit)="submitAddModel()" autocomplete="off">
             <div class="mb-4">
               <label class="block mb-1 font-medium">Institution</label>
