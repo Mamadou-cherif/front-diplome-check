@@ -21,6 +21,11 @@ export class DiplomeService {
     return this.http.get(`${this.apiUrl}/diplomas?page=${page}&size=${size}`);
   }
 
+  // Liste des diplômes (pagination + filtres dynamiques)
+  getDiplomasWithParams(params: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/diplomas`, { params });
+  }
+
   // Récupérer un diplôme par ID
   getDiplomaById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/diplomas/${id}`);
