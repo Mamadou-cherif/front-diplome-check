@@ -29,4 +29,12 @@ export class ModelDiplomeService {
   deleteDiplomaModel(id: number): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/diploma-models/${id}`);
   }
+
+  getFieldsByModelId(modelId: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/diploma-models/${modelId}/fields`);
+  }
+
+  getModelsByInstitutionId(institutionId: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/diploma-models/institution/${institutionId}`);
+  }
 }

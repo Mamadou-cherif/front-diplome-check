@@ -36,7 +36,7 @@ export const MENU_ITEMS: MenuGroup[] = [
         link: 'javascript:void(0);',
         submenu: [
           { label: 'Liste des Modeles', link: '/model/model-diplome' },
-          { label: 'Liste des Diplomes', link: '/accordions' }
+          { label: 'Liste des Diplomes', link: '/accueil/diplome' }
         ],
       },
       {
