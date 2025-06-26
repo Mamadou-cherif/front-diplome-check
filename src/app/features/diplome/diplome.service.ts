@@ -37,8 +37,8 @@ export class DiplomeService {
   }
 
   // Vérifier un diplôme par numéro et/ou institution
-  verifyDiplomaByNumberAndInstitution(numero: string, institutionId?: number): Observable<any> {
-    const params: any = { numero };
+  verifyDiplomaByNumberAndInstitution(registrationNumber: string, institutionId: number): Observable<any> {
+    const params: any = { registrationNumber };
     if (institutionId) params.institutionId = institutionId;
     return this.http.get(`${this.apiUrl}/diplomas/verify`, { params });
   }

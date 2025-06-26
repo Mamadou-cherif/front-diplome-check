@@ -18,22 +18,13 @@
           <input class="border rounded px-3 py-2 w-48" [(ngModel)]="filter.registrationNumber" placeholder="N° d'enregistrement" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1">Nom</label>
-          <input class="border rounded px-3 py-2 w-40" [(ngModel)]="filter.nom" placeholder="Nom" />
+          <label class="block text-sm font-medium mb-1">Institution</label>
+          <select class="border rounded px-3 py-2 w-48" [(ngModel)]="filter.institutionId">
+            <option value="">Toutes</option>
+            <option *ngFor="let inst of institutions" [value]="inst.id">{{ inst.nom }}</option>
+          </select>
         </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">Prénoms</label>
-          <input class="border rounded px-3 py-2 w-40" [(ngModel)]="filter.prenoms" placeholder="Prénoms" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">Email</label>
-          <input class="border rounded px-3 py-2 w-48" [(ngModel)]="filter.email" placeholder="Email" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">Année d'obtention</label>
-          <input class="border rounded px-3 py-2 w-32" [(ngModel)]="filter.anneeObtention" placeholder="Année" />
-        </div>
-        <button class="ml-2 px-5 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition" (click)="applyFilters()">
+        <button class="ml-2 px-5 py-2 rounded bg-purple text-white font-semibold shadow hover:bg-purple/90 transition" (click)="searchDiploma()">
           Rechercher
         </button>
       </div>

@@ -28,10 +28,7 @@ export class ListDiplomesComponent implements OnInit {
 
   filter = {
     registrationNumber: '',
-    nom: '',
-    prenoms: '',
-    email: '',
-    anneeObtention: ''
+    institutionId: null
   };
 
   showAddDiplomeModal = false;
@@ -64,20 +61,18 @@ export class ListDiplomesComponent implements OnInit {
 
   applyFilters() {
     this.page = 0;
-    this.loadDiplomes();
+    this.searchDiploma();
   }
 
   loadDiplomes() {
     let params: any = { page: this.page, size: this.size };
     if (this.filter.registrationNumber) params.registrationNumber = this.filter.registrationNumber;
-    if (this.filter.nom) params['fields.nom'] = this.filter.nom;
-    if (this.filter.prenoms) params['fields.prénoms'] = this.filter.prenoms;
-    if (this.filter.email) params['fields.email'] = this.filter.email;
-    if (this.filter.anneeObtention) params['fields.année d\'obtention'] = this.filter.anneeObtention;
+    if (this.filter.institutionId) params.institutionId = this.filter.institutionId;
 
     this.diplomeService.getDiplomasWithParams(params).subscribe({
       next: (res) => {
         this.diplomes = res.data.content || [];
+        console.log('Diplômes chargés OnInit :', this.diplomes);
         this.totalPages = res.data.totalPages || 1;
         this.totalElements = res.data.totalElements || 0;
       },
@@ -239,5 +234,45 @@ export class ListDiplomesComponent implements OnInit {
     } else {
       this.importFile = null;
     }
+  }
+
+  searchDiploma() {
+    console.log("this.filter.institutionId", this.filter.institutionId);
+    
+    if (!this.filter.registrationNumber && (this.filter.institutionId === null || this.filter.institutionId === undefined || this.filter.institutionId === '')) {
+     // this.toastService.error("Veuillez renseigner le numéro d'enregistrement et l'institution.");
+     this.loadDiplomes(); 
+     return;
+    }
+    const institutionIdNum = Number(this.filter.institutionId);
+    this.diplomeService.verifyDiplomaByNumberAndInstitution(
+      this.filter.registrationNumber,
+      institutionIdNum
+    ).subscribe({
+      next: (res) => {
+        let result = res?.data?.content ?? res?.data;
+        if (result) {
+          if (Array.isArray(result)) {
+            this.diplomes = result;
+            this.totalElements = result.length;
+          } else {
+            this.diplomes = [result];
+            this.totalElements = 1;
+          }
+          this.totalPages = 1;
+        } else {
+          this.diplomes = [];
+          this.totalPages = 1;
+          this.totalElements = 0;
+          this.toastService.info('Aucun diplôme trouvé pour ces critères.');
+        }
+      },
+      error: (err) => {
+        this.diplomes = [];
+        this.totalPages = 1;
+        this.totalElements = 0;
+        this.toastService.error('Erreur lors de la recherche du diplôme.');
+      }
+    });
   }
 }
