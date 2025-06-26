@@ -36,6 +36,13 @@ export class DiplomeService {
     return this.http.post(`${this.apiUrl}/diplomas/verify`, { registrationNumber });
   }
 
+  // Vérifier un diplôme par numéro et/ou institution
+  verifyDiplomaByNumberAndInstitution(numero: string, institutionId?: number): Observable<any> {
+    const params: any = { numero };
+    if (institutionId) params.institutionId = institutionId;
+    return this.http.get(`${this.apiUrl}/diplomas/verify`, { params });
+  }
+
   // Import batch de diplômes (Excel)
   importDiplomas(file: File, modelId: number): Observable<any> {
     const formData = new FormData();
