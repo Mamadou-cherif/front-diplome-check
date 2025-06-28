@@ -32,16 +32,26 @@ export class DiplomeService {
   }
 
   // Vérifier un diplôme
-  verifyDiploma(registrationNumber: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/diplomas/verify`, { registrationNumber });
+  // verifyDiploma(registrationNumber: string): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/diplomas/verify`, { registrationNumber });
+  // }
+
+ verifyDiplomaByNumberAndInstitution(registrationNumber?: string, institutionId?: number): Observable<any> {
+  const params: any = {};
+
+  if (registrationNumber) {
+    params.registrationNumber = registrationNumber;
   }
 
-  // Vérifier un diplôme par numéro et/ou institution
-  verifyDiplomaByNumberAndInstitution(registrationNumber: string, institutionId: number): Observable<any> {
-    const params: any = { registrationNumber };
-    if (institutionId) params.institutionId = institutionId;
-    return this.http.get(`${this.apiUrl}/diplomas/verify`, { params });
+  if (institutionId) {
+    params.institutionId = institutionId;
+    params.size = 10; // Fixer la taille de la page à 10 quand institutionId est présent
   }
+
+  return this.http.get(`${this.apiUrl}/diplomas/verify`, { params });
+}
+
+
 
   // Import batch de diplômes (Excel)
   importDiplomas(file: File, modelId: number): Observable<any> {

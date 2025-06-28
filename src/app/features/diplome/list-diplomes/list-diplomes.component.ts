@@ -72,7 +72,6 @@ export class ListDiplomesComponent implements OnInit {
     this.diplomeService.getDiplomasWithParams(params).subscribe({
       next: (res) => {
         this.diplomes = res.data.content || [];
-        console.log('Diplômes chargés OnInit :', this.diplomes);
         this.totalPages = res.data.totalPages || 1;
         this.totalElements = res.data.totalElements || 0;
       },
@@ -89,7 +88,6 @@ export class ListDiplomesComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erreur lors du chargement des institutions', err);
-        this
       }
     });
   }
@@ -98,11 +96,11 @@ export class ListDiplomesComponent implements OnInit {
     // On charge tous les modèles pour filtrer côté client
     this.modelDiplomeService.getDiplomaModels(0, 1000).subscribe({
       next: (res) => {
-        this.allModels = res.data.content || [];
+        this.allModels = res?.data?.content || [];
       },
       error: (err) => {
-        console.error('Erreur lors du chargement des modèles', err);
         this.toastService.error('Erreur lors du chargement des modèles de diplômes');
+        console.error('Erreur lors du chargement des modèles', err);
       }
     });
   }
@@ -237,7 +235,6 @@ export class ListDiplomesComponent implements OnInit {
   }
 
   searchDiploma() {
-    console.log("this.filter.institutionId", this.filter.institutionId);
     
     if (!this.filter.registrationNumber && (this.filter.institutionId === null || this.filter.institutionId === undefined || this.filter.institutionId === '')) {
      // this.toastService.error("Veuillez renseigner le numéro d'enregistrement et l'institution.");
@@ -255,11 +252,13 @@ export class ListDiplomesComponent implements OnInit {
           if (Array.isArray(result)) {
             this.diplomes = result;
             this.totalElements = result.length;
+            this.totalPages = res.data.totalPages || 1;
           } else {
             this.diplomes = [result];
             this.totalElements = 1;
+            this.totalPages = res.data.totalPages || 1;
+
           }
-          this.totalPages = 1;
         } else {
           this.diplomes = [];
           this.totalPages = 1;
