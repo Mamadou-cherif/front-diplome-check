@@ -31,10 +31,7 @@ export class DiplomeService {
     return this.http.get(`${this.apiUrl}/diplomas/${id}`);
   }
 
-  // Vérifier un diplôme
-  // verifyDiploma(registrationNumber: string): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/diplomas/verify`, { registrationNumber });
-  // }
+  
 
  verifyDiplomaByNumberAndInstitution(registrationNumber?: string, institutionId?: number): Observable<any> {
   const params: any = {};
@@ -45,7 +42,7 @@ export class DiplomeService {
 
   if (institutionId) {
     params.institutionId = institutionId;
-    params.size = 10; // Fixer la taille de la page à 10 quand institutionId est présent
+    params.size = 10; 
   }
 
   return this.http.get(`${this.apiUrl}/diplomas/verify`, { params });
