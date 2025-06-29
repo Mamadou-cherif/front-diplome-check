@@ -274,4 +274,20 @@ export class ListDiplomesComponent implements OnInit {
       }
     });
   }
+
+  downloadCertificate(id: number) {
+    this.diplomeService.getDiplomaCertificate(id).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `certificat-${id}.pdf`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: () => {
+        this.toastService.error('Erreur lors du téléchargement du certificat.');
+      }
+    });
+  }
 }

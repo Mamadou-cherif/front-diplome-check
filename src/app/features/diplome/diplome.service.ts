@@ -57,4 +57,15 @@ export class DiplomeService {
     formData.append('modelId', modelId.toString());
     return this.http.post(`${this.apiUrl}/diplomas/import`, formData);
   }
+
+  /**
+   * Récupère le certificat PDF d'un diplôme par son ID
+   * @param id identifiant du diplôme
+   */
+  getDiplomaCertificate(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/diplomas/${id}/certificate`, {
+      responseType: 'blob',
+      headers: { 'Accept': 'application/pdf' }
+    });
+  }
 }
